@@ -1,12 +1,9 @@
-📬 Email Triage — July 16, 2026  06:24 UTC
-
-P1 – Respond Now (1)
-  • [Guru Majgaonkar] "Re: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region" — Score 45.8  [Reply now]
+📬 Email Triage — July 16, 2026  09:04 UTC
 
 P2 – Respond Today (2)
-  • [Atish Sharma] "PI Planning Status" — Score 63.2  [Reply today]
-  • [Abhishek Patankar] "urgent : need help" — Score 37.8  [Reply today]
+  • [Prasad Mhatre] "Re: Billing Usage Missing - Urgent Action Needed - PTID(s) 1147" — Score 58.2  [Reply today]
+  • [Atish Sharma] "PI Planning Status" — Score 35.5  [Reply today]
 
-34 P3 + 66 P4 emails de-prioritized.
+17 P3 + 2 P4 emails de-prioritized.
 
 Full report: reports/20260716/email-triage.html

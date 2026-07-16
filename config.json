@@ -7,6 +7,7 @@
   "output_dir": "./reports",
   "user_email": "indra.choudhari@nice.com",
   "directed_recipient_max": 15,
+  "keyword_floor_max_recipients": 5,
   "atlassian_cloud_id": null,
   "internal_domains": ["nice.com", "niceincontact.com"],
   "vip_senders": [],

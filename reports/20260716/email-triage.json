@@ -1,74 +1,31 @@
 {
-  "scan_datetime": "2026-07-16T06:24:52.330930+00:00",
+  "scan_datetime": "2026-07-16T09:04:41.132811+00:00",
   "folder": "Inbox",
-  "since_hours": 48,
-  "total_emails": 103,
+  "since_hours": 5,
+  "total_emails": 21,
   "incomplete": false,
   "incomplete_reason": "",
   "tiers": {
-    "P1": [
-      {
-        "id": "o37",
-        "subject": "Re: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region",
-        "from_email": "guru.majgaonkar@nice.com",
-        "from_name": "Guru Majgaonkar",
-        "received_at": "2026-07-15T10:30:05+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Asks who owns action item for critical service, added to Capacity agent?",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 9,
-        "directed_to_me": true,
-        "conversation_id": "platform and osci workstream : capacity executive summary report : 15-july-2026 : microservice health of na1 region",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 45.8,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "action_language",
-            "contribution": 8.32
-          }
-        ],
-        "confidence": "high",
-        "keyword_promoted": true,
-        "promoted_by": "critical",
-        "priority_tier": "P1",
-        "suggested_action": "Reply now",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "reply",
-        "attn_reason": "Reply needed"
-      }
-    ],
+    "P1": [],
     "P2": [
       {
-        "id": "o124",
-        "subject": "PI Planning Status",
-        "from_email": "atish.sharma@nice.com",
-        "from_name": "Atish Sharma",
-        "received_at": "2026-07-16T05:44:08+00:00",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDJAAA=",
+        "subject": "Re: Billing Usage Missing - Urgent Action Needed - PTID(s) 1147",
+        "from_email": "prasad.mhatre@nice.com",
+        "from_name": "Prasad Mhatre",
+        "received_at": "2026-07-16T08:42:01+00:00",
         "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "Could you please share the Billing & Telemetry PI planning status & confluence pages for 26.4 release?",
-        "is_read": true,
-        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
-        "recipient_count": 1,
+        "has_attachments": false,
+        "body_preview": "Hi @Atish Sharma,\r\n\r\nQuestion: For which environment this issue is occurring(prod-na1, prod-de, etc)?\r\n\r\n\r\nWe checked the prod-na1 logs on cognigy and snowflake data for prod-na1 from 01-july-2026 for",
+        "is_read": false,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDJAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 10,
         "directed_to_me": true,
-        "conversation_id": "pi planning status",
+        "conversation_id": "billing usage missing - urgent action needed - ptid(s) 1147",
         "thread_depth": 1,
         "sender_relationship": "frequent",
         "directed": true,
-        "urgency_score": 63.2,
+        "urgency_score": 58.2,
         "top_3_signals": [
           {
             "signal": "recency",
@@ -86,46 +43,45 @@
         "confidence": "high",
         "priority_tier": "P2",
         "suggested_action": "Reply today",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
+        "reply_tone": "empathetic",
+        "effort_estimate": "medium",
         "attn_kind": "reply",
         "attn_reason": "Reply needed"
       },
       {
-        "id": "o46",
-        "subject": "urgent : need help",
-        "from_email": "abhishek.patankar@nice.com",
-        "from_name": "Abhishek Patankar",
-        "received_at": "2026-07-15T06:57:08+00:00",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDAAAA=",
+        "subject": "PI Planning Status",
+        "from_email": "atish.sharma@nice.com",
+        "from_name": "Atish Sharma",
+        "received_at": "2026-07-16T05:44:08+00:00",
         "importance": "normal",
         "has_attachments": false,
-        "body_preview": "urgent : need help. Regards, Abhishek Patankar.",
+        "body_preview": "Hi @Indra,",
         "is_read": true,
-        "web_link": "",
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
         "recipient_count": 1,
         "directed_to_me": true,
-        "conversation_id": "urgent : need help",
+        "conversation_id": "pi planning status",
         "thread_depth": 1,
         "sender_relationship": "frequent",
         "directed": true,
-        "urgency_score": 37.8,
+        "urgency_score": 35.5,
         "top_3_signals": [
           {
             "signal": "sender_authority",
             "contribution": 16.5
           },
           {
-            "signal": "action_language",
-            "contribution": 8.32
+            "signal": "recency",
+            "contribution": 14.0
           },
           {
-            "signal": "recency",
-            "contribution": 8.0
+            "signal": "importance_flag",
+            "contribution": 3.0
           }
         ],
         "confidence": "high",
-        "keyword_promoted": true,
-        "promoted_by": "urgent",
+        "solo_recipient_promoted": true,
         "priority_tier": "P2",
         "suggested_action": "Reply today",
         "reply_tone": "concise",
@@ -136,939 +92,179 @@
     ],
     "P3": [
       {
-        "id": "o10",
-        "subject": "[Tel/Bil] QA - Dev Transition Plan",
-        "from_email": "aboli.avadhani@nice.com",
-        "from_name": "Aboli Avadhani",
-        "received_at": "2026-07-16T03:16:33+00:00",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDIAAA=",
+        "subject": "RE: Request to Temporarily Suppress xMatters Alerts for STORAGE_AGGREGATOR_REFINER Across All Regions",
+        "from_email": "ismael.marcaida@nice.com",
+        "from_name": "Ismael Marcaida",
+        "received_at": "2026-07-16T07:37:50+00:00",
         "importance": "normal",
         "has_attachments": false,
-        "body_preview": "Please come up with draft plan to cross train Dev and QA members during 26.4 release and let's finalize with measurable goals and ETA.",
+        "body_preview": "All,\r\n\r\nNOC doesn\u2019t have any capability to suppress alerts.\r\n\r\nFYI @EMTools team for their request.\r\n\r\n\r\nKind regards,\r\n\r\nIsmael Marcaida\r\nNOC Engineer\r\nPhone Number: 877.793.5216\r\nEmail: ismael.marca",
         "is_read": false,
-        "web_link": "",
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDIAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 7,
+        "directed_to_me": true,
+        "conversation_id": "request to temporarily suppress xmatters alerts for storage_aggregator_refiner across all regions",
+        "thread_depth": 2,
+        "sender_relationship": "frequent",
+        "directed": true,
+        "urgency_score": 43.5,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 20.0
+          },
+          {
+            "signal": "sender_authority",
+            "contribution": 16.5
+          },
+          {
+            "signal": "thread_depth",
+            "contribution": 4.0
+          }
+        ],
+        "confidence": "high",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "quick",
+        "attn_kind": "attn",
+        "attn_reason": "For your attention"
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDHAAA=",
+        "subject": "FW: DWP Reporting",
+        "from_email": "tee.singh@nice.com",
+        "from_name": "Tee Singh",
+        "received_at": "2026-07-16T07:01:25+00:00",
+        "importance": "high",
+        "has_attachments": false,
+        "body_preview": "Good Morning\r\n\r\n\r\n\r\nHope you are well.\r\n\r\nNot sure if you are the right person or can point me to the right direction.\r\n\r\n\r\n\r\nWe have https://home-lo26.nicecxone-sov1.uk/ locked down so it can not be ",
+        "is_read": true,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDHAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 3,
+        "directed_to_me": false,
+        "conversation_id": "dwp reporting",
+        "thread_depth": 1,
+        "sender_relationship": "frequent",
+        "directed": false,
+        "urgency_score": 42.5,
+        "top_3_signals": [
+          {
+            "signal": "sender_authority",
+            "contribution": 16.5
+          },
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "importance_flag",
+            "contribution": 10.0
+          }
+        ],
+        "confidence": "high",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "quick",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDGAAA=",
+        "subject": "Request to Temporarily Suppress xMatters Alerts for STORAGE_AGGREGATOR_REFINER Across All Regions",
+        "from_email": "akshay.dumbre@nice.com",
+        "from_name": "Akshay Dumbre",
+        "received_at": "2026-07-16T06:50:05+00:00",
+        "importance": "normal",
+        "has_attachments": false,
+        "body_preview": "Hi NOC Team,\r\n\r\nWe are receiving repeated xMatters SLA breach alerts for the following Airflow DAG/refiner:\r\n\r\n\r\n  *   storage_every_15_minutes / STORAGE_AGGREGATOR_REFINER\r\n\r\nChange Request CHG018495",
+        "is_read": true,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDGAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
         "recipient_count": 5,
         "directed_to_me": true,
-        "conversation_id": "[tel/bil] qa - dev transition plan",
-        "thread_depth": 1,
-        "sender_relationship": "manager",
+        "conversation_id": "request to temporarily suppress xmatters alerts for storage_aggregator_refiner across all regions",
+        "thread_depth": 2,
+        "sender_relationship": "frequent",
         "directed": true,
-        "urgency_score": 43.0,
+        "urgency_score": 37.5,
         "top_3_signals": [
           {
             "signal": "sender_authority",
-            "contribution": 24.0
+            "contribution": 16.5
           },
           {
             "signal": "recency",
             "contribution": 14.0
           },
           {
-            "signal": "importance_flag",
-            "contribution": 3.0
+            "signal": "thread_depth",
+            "contribution": 4.0
           }
         ],
         "confidence": "high",
         "priority_tier": "P3",
         "suggested_action": "Review when free",
-        "reply_tone": "formal",
+        "reply_tone": "concise",
         "effort_estimate": "quick",
-        "attn_kind": "fyi",
-        "attn_reason": "FYI - team update"
+        "attn_kind": "attn",
+        "attn_reason": "For your attention"
       },
       {
-        "id": "o11",
-        "subject": "Internal Review Tel/Bil 26.4 release plan",
-        "from_email": "aboli.avadhani@nice.com",
-        "from_name": "Aboli Avadhani",
-        "received_at": "2026-07-16T03:12:29+00:00",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDKAAA=",
+        "subject": "GrowPro Check-in Update: Self-Assessment Deadline Extended",
+        "from_email": "growpro@nice.com",
+        "from_name": "growpro@nice.com",
+        "received_at": "2026-07-16T08:50:58+00:00",
         "importance": "normal",
         "has_attachments": false,
-        "body_preview": "Teams meeting invite for internal review of 26.4 release plan.",
+        "body_preview": "NiCEr,\r\n\r\n\r\n\r\nFollowing the recent SuccessFactors system downtime, which has now been resolved, we've extended the Self-Assessment deadline for the GrowPro Check-in to Monday, July 20, to allow you ad",
         "is_read": false,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": true,
-        "conversation_id": "internal review tel/bil 26.4 release plan",
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDKAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 3,
+        "directed_to_me": false,
+        "conversation_id": "growpro check-in update: self-assessment deadline extended",
         "thread_depth": 1,
-        "sender_relationship": "manager",
-        "directed": true,
-        "urgency_score": 43.0,
+        "sender_relationship": "unknown",
+        "directed": false,
+        "urgency_score": 36.3,
         "top_3_signals": [
           {
-            "signal": "sender_authority",
-            "contribution": 24.0
-          },
-          {
             "signal": "recency",
-            "contribution": 14.0
+            "contribution": 20.0
           },
           {
-            "signal": "importance_flag",
+            "signal": "action_language",
+            "contribution": 8.32
+          },
+          {
+            "signal": "sender_authority",
             "contribution": 3.0
           }
         ],
-        "confidence": "high",
+        "confidence": "medium",
         "priority_tier": "P3",
         "suggested_action": "Review when free",
-        "reply_tone": "formal",
+        "reply_tone": "concise",
         "effort_estimate": "quick",
-        "attn_kind": "fyi",
-        "attn_reason": "FYI - team update"
-      },
-      {
-        "id": "o35",
-        "subject": "RE: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region",
-        "from_email": "vipul.aglawe@nice.com",
-        "from_name": "Vipul Aglawe",
-        "received_at": "2026-07-15T10:45:29+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "Service belongs to UH-Exoplanet team, was green on 14th, CPU 10% triggered red, 90% remaining.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 9,
-        "directed_to_me": true,
-        "conversation_id": "platform and osci workstream : capacity executive summary report : 15-july-2026 : microservice health of na1 region",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 42.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o36",
-        "subject": "RE: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region",
-        "from_email": "vipul.aglawe@nice.com",
-        "from_name": "Vipul Aglawe",
-        "received_at": "2026-07-15T10:41:01+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "Reply in thread, signature only.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 9,
-        "directed_to_me": true,
-        "conversation_id": "platform and osci workstream : capacity executive summary report : 15-july-2026 : microservice health of na1 region",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 42.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o38",
-        "subject": "Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region",
-        "from_email": "nilesh.awate@nice.com",
-        "from_name": "Nilesh Awate",
-        "received_at": "2026-07-15T10:12:19+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "Attached Capacity Executive Summary Report for 15-July-2026, automation bot.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 10,
-        "directed_to_me": true,
-        "conversation_id": "platform and osci workstream : capacity executive summary report : 15-july-2026 : microservice health of na1 region",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 42.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o0",
-        "subject": "[prod-uk3] Alert Id 1: Billing Infra Notification: No Usage received",
-        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "received_at": "2026-07-16T05:31:32+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Automated System Notification. Product type IDs with no usage for last 5 days.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "[prod-uk3] alert id 1: billing infra notification: no usage received",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 42.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 20.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
         "attn_kind": "",
         "attn_reason": ""
       },
       {
-        "id": "o1",
-        "subject": "[prod-uk3] Alert Id 16: Telemetry Notification : Null API PATH PATTERNS in datalake",
-        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "received_at": "2026-07-16T05:31:31+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Null API path patterns identified in Datalake, investigate.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "[prod-uk3] alert id 16: telemetry notification : null api path patterns in datalake",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 42.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 20.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o2",
-        "subject": "[prod-uk3] Alert Id 3: Billing Infra Notification: Zero Usage received",
-        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "received_at": "2026-07-16T05:31:30+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Product type IDs with zero usage for last 5 days.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "[prod-uk3] alert id 3: billing infra notification: zero usage received",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 42.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 20.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o3",
-        "subject": "[prod-uk3] Alert Id 14: Telemetry Notification : Missing client application ids in datalake",
-        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "received_at": "2026-07-16T05:31:29+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Missing client application ids in Datalake, investigate.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "[prod-uk3] alert id 14: telemetry notification : missing client application ids in datalake",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 42.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 20.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o4",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC6AAA=",
         "subject": "REMINDER: CX Platform & OSCI S&C- Sprint Demo Nominations for Sprint 192",
         "from_email": "sunny.deo@nice.com",
         "from_name": "Sunny Deo",
         "received_at": "2026-07-16T05:08:22+00:00",
         "importance": "normal",
         "has_attachments": false,
-        "body_preview": "Sprint 192 Demo Nominations reminder.",
+        "body_preview": "Sprint 192 Demo Nominations\r\n\r\n\r\n\r\n                                                                                                                               Dear All,\r\n\r\nIt's time to highlight th",
         "is_read": false,
-        "web_link": "",
-        "recipient_count": 6,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC6AAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 88,
         "directed_to_me": false,
         "conversation_id": "reminder: cx platform & osci s&c- sprint demo nominations for sprint 192",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 41.5,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 20.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "quick",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o7",
-        "subject": "Happy Birthday Shital !!!",
-        "from_email": "sunny.deo@nice.com",
-        "from_name": "Sunny Deo",
-        "received_at": "2026-07-16T04:31:27+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Birthday greeting.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 4,
-        "directed_to_me": false,
-        "conversation_id": "happy birthday shital !!!",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 41.5,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 20.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "quick",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o56",
-        "subject": "Canceled: Telemetry/Billing - Flow Meeting Series [Discovery Team]",
-        "from_email": "aboli.avadhani@nice.com",
-        "from_name": "Aboli Avadhani",
-        "received_at": "2026-07-15T05:01:39+00:00",
-        "importance": "high",
-        "has_attachments": false,
-        "body_preview": "Meeting cancellation.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 10,
-        "directed_to_me": true,
-        "conversation_id": "canceled: telemetry/billing - flow meeting series [discovery team]",
-        "thread_depth": 1,
-        "sender_relationship": "manager",
-        "directed": true,
-        "urgency_score": 38.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 24.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "formal",
-        "effort_estimate": "quick",
-        "attn_kind": "cancel",
-        "attn_reason": "Meeting cancelled"
-      },
-      {
-        "id": "o57",
-        "subject": "Canceled: [Tel/Bil] Weekly Sync: Jira updates and Epics status",
-        "from_email": "aboli.avadhani@nice.com",
-        "from_name": "Aboli Avadhani",
-        "received_at": "2026-07-15T05:01:10+00:00",
-        "importance": "high",
-        "has_attachments": false,
-        "body_preview": "Meeting cancellation.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 4,
-        "directed_to_me": true,
-        "conversation_id": "canceled: [tel/bil] weekly sync: jira updates and epics status",
-        "thread_depth": 1,
-        "sender_relationship": "manager",
-        "directed": true,
-        "urgency_score": 38.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 24.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "formal",
-        "effort_estimate": "quick",
-        "attn_kind": "cancel",
-        "attn_reason": "Meeting cancelled"
-      },
-      {
-        "id": "o23",
-        "subject": "RE: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)",
-        "from_email": "yogesh.patil3@nice.com",
-        "from_name": "Yogesh Patil3",
-        "received_at": "2026-07-15T16:20:23+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Thread on Digital Usage Report channel dependency, adding Dominik.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 14,
-        "directed_to_me": true,
-        "conversation_id": "dependency on bil-8533 for digital usage report (cxdv-71801)",
-        "thread_depth": 6,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o24",
-        "subject": "Re: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)",
-        "from_email": "arulmurugan.ganesan@nice.com",
-        "from_name": "Arulmurugan Ganesan",
-        "received_at": "2026-07-15T14:52:18+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Option to decode channel names in separate field for dashboard team.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 13,
-        "directed_to_me": true,
-        "conversation_id": "dependency on bil-8533 for digital usage report (cxdv-71801)",
-        "thread_depth": 6,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o25",
-        "subject": "RE: Test US East (NA2) BCP Region MyGlobal Billing Credentials",
-        "from_email": "jeremy.allen@nice.com",
-        "from_name": "Jeremy Allen",
-        "received_at": "2026-07-15T14:45:24+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "DB credentials request should go to DBA DevOps team, quiet this thread.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 8,
-        "directed_to_me": false,
-        "conversation_id": "test us east (na2) bcp region myglobal billing credentials",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o26",
-        "subject": "Re: Test US East (NA2) BCP Region MyGlobal Billing Credentials",
-        "from_email": "joseph.giordano@nice.com",
-        "from_name": "Joseph Giordano",
-        "received_at": "2026-07-15T14:37:17+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "No access to server info, SysOps can help.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 8,
-        "directed_to_me": false,
-        "conversation_id": "test us east (na2) bcp region myglobal billing credentials",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o27",
-        "subject": "Re: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)",
-        "from_email": "chetan.supekar@nice.com",
-        "from_name": "Chetan Supekar",
-        "received_at": "2026-07-15T14:29:54+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Confirms 2 widgets need channel data, asks Nat Harward re architects.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 13,
-        "directed_to_me": true,
-        "conversation_id": "dependency on bil-8533 for digital usage report (cxdv-71801)",
-        "thread_depth": 6,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o30",
-        "subject": "RE: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region",
-        "from_email": "nilesh.awate@nice.com",
-        "from_name": "Nilesh Awate",
-        "received_at": "2026-07-15T12:41:42+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "segment-context-manager-service 3-day growth 3629.1%, CPU 8.2%, explains red status.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 9,
-        "directed_to_me": true,
-        "conversation_id": "platform and osci workstream : capacity executive summary report : 15-july-2026 : microservice health of na1 region",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o31",
-        "subject": "Re: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)",
-        "from_email": "arulmurugan.ganesan@nice.com",
-        "from_name": "Arulmurugan Ganesan",
-        "received_at": "2026-07-15T12:36:03+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Asks if requirement exists to show channel in report display.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 13,
-        "directed_to_me": true,
-        "conversation_id": "dependency on bil-8533 for digital usage report (cxdv-71801)",
-        "thread_depth": 6,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o32",
-        "subject": "RE: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region",
-        "from_email": "sajid.memon@nice.com",
-        "from_name": "Sajid Memon",
-        "received_at": "2026-07-15T11:26:26+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Investigate as stated, tuning needed - RED vs recommendation mismatch.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 9,
-        "directed_to_me": true,
-        "conversation_id": "platform and osci workstream : capacity executive summary report : 15-july-2026 : microservice health of na1 region",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o34",
-        "subject": "Re: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region",
-        "from_email": "guru.majgaonkar@nice.com",
-        "from_name": "Guru Majgaonkar",
-        "received_at": "2026-07-15T10:56:10+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "CPU not the reason for red, 3-day traffic 6997.9% is - investigate.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 9,
-        "directed_to_me": true,
-        "conversation_id": "platform and osci workstream : capacity executive summary report : 15-july-2026 : microservice health of na1 region",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o42",
-        "subject": "RE: Test US East (NA2) BCP Region MyGlobal Billing Credentials",
-        "from_email": "dhiraj.jadhav@nice.com",
-        "from_name": "Dhiraj Jadhav",
-        "received_at": "2026-07-15T08:36:11+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Asks Joe for credentials for global database users and server IPs.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": false,
-        "conversation_id": "test us east (na2) bcp region myglobal billing credentials",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 37.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o15",
-        "subject": "[Platform] Sprint/192 ic-prod-za Deployment-Done",
-        "from_email": "indranil.biswas@nice.com",
-        "from_name": "Indranil Biswas",
-        "received_at": "2026-07-16T00:24:46+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Deployment for Group-1 Platform (ic-prod-za) Sprint/192 completed.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "[platform] sprint/192 ic-prod-za deployment-done",
         "thread_depth": 1,
         "sender_relationship": "frequent",
         "directed": false,
@@ -1096,158 +292,78 @@
         "attn_reason": ""
       },
       {
-        "id": "o5",
-        "subject": "Learn the Do's & Don'ts of Income Tax filing join our Webinar.",
-        "from_email": "consumers@updates.consumer.pluxee.in",
-        "from_name": "Consumers",
-        "received_at": "2026-07-16T05:00:47+00:00",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC3AAA=",
+        "subject": "Happy Birthday Shital !!!",
+        "from_email": "sunny.deo@nice.com",
+        "from_name": "Sunny Deo",
+        "received_at": "2026-07-16T04:31:27+00:00",
         "importance": "normal",
         "has_attachments": false,
-        "body_preview": "Marketing webinar invite - tax filing.",
+        "body_preview": "",
         "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "learn the do's & don'ts of income tax filing join our webinar.",
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC3AAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 4,
+        "directed_to_me": false,
+        "conversation_id": "happy birthday shital !!!",
         "thread_depth": 1,
-        "sender_relationship": "external",
-        "directed": true,
+        "sender_relationship": "frequent",
+        "directed": false,
+        "urgency_score": 35.5,
+        "top_3_signals": [
+          {
+            "signal": "sender_authority",
+            "contribution": 16.5
+          },
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "importance_flag",
+            "contribution": 3.0
+          }
+        ],
+        "confidence": "high",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "quick",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC_AAA=",
+        "subject": "[prod-uk3] Alert Id 1: Billing Infra Notification: No Usage received",
+        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
+        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
+        "received_at": "2026-07-16T05:31:32+00:00",
+        "importance": "high",
+        "has_attachments": true,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\nBilling Infra | Alerts Notification\r\n\r\nAutomated System Notification\r\n\r\nREQUIRES ATTENTION\r\n\r\nDear User,\r\n\r\nALERT ID        #1\r\n\r\nThe system has identified a list of product type I",
+        "is_read": false,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC%2BAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 1,
+        "directed_to_me": false,
+        "conversation_id": "[prod-uk3] alert id 1: billing infra notification: no usage received",
+        "thread_depth": 1,
+        "sender_relationship": "unknown",
+        "directed": false,
         "urgency_score": 34.0,
         "top_3_signals": [
           {
             "signal": "recency",
-            "contribution": 20.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 9.0
+            "contribution": 14.0
           },
           {
             "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "formal",
-        "effort_estimate": "quick",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o41",
-        "subject": "RE: MyGlobal DB connectivity on Test US East (NA2) region",
-        "from_email": "dhiraj.jadhav@nice.com",
-        "from_name": "Dhiraj Jadhav",
-        "received_at": "2026-07-15T08:40:45+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Thanks for update, please keep posted on IPSec connection creation.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 9,
-        "directed_to_me": false,
-        "conversation_id": "myglobal db connectivity on test us east (na2) region",
-        "thread_depth": 3,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 33.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 6.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "quick",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o73",
-        "subject": "Re: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)",
-        "from_email": "chetan.supekar@nice.com",
-        "from_name": "Chetan Supekar",
-        "received_at": "2026-07-14T16:09:48+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "This is a showstopper for Digital Usage Report - channel details needed for WhatsApp filtering.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 13,
-        "directed_to_me": true,
-        "conversation_id": "dependency on bil-8533 for digital usage report (cxdv-71801)",
-        "thread_depth": 6,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 31.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
             "contribution": 10.0
           },
           {
-            "signal": "importance_flag",
-            "contribution": 3.0
+            "signal": "has_attachment",
+            "contribution": 5.0
           }
         ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o79",
-        "subject": "Re: Test US East (NA2) BCP Region MyGlobal Billing Credentials",
-        "from_email": "perry.whittle@nice.com",
-        "from_name": "Perry Whittle",
-        "received_at": "2026-07-14T14:22:01+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Confirms ticket was for uksov only.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": false,
-        "conversation_id": "test us east (na2) bcp region myglobal billing credentials",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 31.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
+        "confidence": "medium",
         "priority_tier": "P3",
         "suggested_action": "Review when free",
         "reply_tone": "concise",
@@ -1256,231 +372,151 @@
         "attn_reason": ""
       },
       {
-        "id": "o80",
-        "subject": "Re: Test US East (NA2) BCP Region MyGlobal Billing Credentials",
-        "from_email": "joseph.giordano@nice.com",
-        "from_name": "Joseph Giordano",
-        "received_at": "2026-07-14T14:08:43+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Refers to ServiceNow RITM0098046, password supplied by Perry May 18.",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC9AAA=",
+        "subject": "[prod-uk3] Alert Id 16: Telemetry Notification : Null API PATH PATTERNS in datalake",
+        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
+        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
+        "received_at": "2026-07-16T05:31:31+00:00",
+        "importance": "high",
+        "has_attachments": true,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\nTelemetry Notification\r\n\r\nAutomated System Notification\r\n\r\nREQUIRES ATTENTION\r\n\r\nDear User,\r\n\r\nALERT ID        #16\r\n\r\nSystem has identified null API path patterns in Datalake, plea",
         "is_read": false,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": false,
-        "conversation_id": "test us east (na2) bcp region myglobal billing credentials",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 31.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o84",
-        "subject": "Re: Test US East (NA2) BCP Region MyGlobal Billing Credentials",
-        "from_email": "joseph.giordano@nice.com",
-        "from_name": "Joseph Giordano",
-        "received_at": "2026-07-14T12:52:18+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Looking into how it needs to be handled, no server access yet.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": false,
-        "conversation_id": "test us east (na2) bcp region myglobal billing credentials",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 31.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o87",
-        "subject": "RE: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)",
-        "from_email": "yogesh.patil3@nice.com",
-        "from_name": "Yogesh Patil3",
-        "received_at": "2026-07-14T10:49:15+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "DFO sends channel type code, not actual channel name, refiner process needed.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 13,
-        "directed_to_me": true,
-        "conversation_id": "dependency on bil-8533 for digital usage report (cxdv-71801)",
-        "thread_depth": 6,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 31.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o101",
-        "subject": "RE: Test US East (NA2) BCP Region MyGlobal Billing Credentials",
-        "from_email": "dhiraj.jadhav@nice.com",
-        "from_name": "Dhiraj Jadhav",
-        "received_at": "2026-07-14T06:44:45+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Need connection details/credentials for MyGlobal instance NA2 region.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": false,
-        "conversation_id": "test us east (na2) bcp region myglobal billing credentials",
-        "thread_depth": 7,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 31.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 10.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "concise",
-        "effort_estimate": "detailed",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o74",
-        "subject": "Fw: Reminder: Designate Your Resilience Testing Specialist (RTS) by July 14 for Resilience Experiments + Game Day Program",
-        "from_email": "aboli.avadhani@nice.com",
-        "from_name": "Aboli Avadhani",
-        "received_at": "2026-07-14T16:08:14+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Additional ask for 26.4 planning, create separate epic to track.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 4,
-        "directed_to_me": false,
-        "conversation_id": "reminder: designate your resilience testing specialist (rts) by july 14 for resilience experiments + game day program",
-        "thread_depth": 1,
-        "sender_relationship": "manager",
-        "directed": false,
-        "urgency_score": 31.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 24.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P3",
-        "suggested_action": "Review when free",
-        "reply_tone": "formal",
-        "effort_estimate": "quick",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o6",
-        "subject": "Snowflake User Will be Disabled Soon",
-        "from_email": "infratools@niceincontact.com",
-        "from_name": "infratools@niceincontact.com",
-        "received_at": "2026-07-16T04:55:29+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Snowflake account cxone_na1 inactive 85+ days, disabled at 90 days.",
-        "is_read": false,
-        "web_link": "",
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC9AAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
         "recipient_count": 1,
+        "directed_to_me": false,
+        "conversation_id": "[prod-uk3] alert id 16: telemetry notification : null api path patterns in datalake",
+        "thread_depth": 1,
+        "sender_relationship": "unknown",
+        "directed": false,
+        "urgency_score": 34.0,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "importance_flag",
+            "contribution": 10.0
+          },
+          {
+            "signal": "has_attachment",
+            "contribution": 5.0
+          }
+        ],
+        "confidence": "medium",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "detailed",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC8AAA=",
+        "subject": "[prod-uk3] Alert Id 3: Billing Infra Notification: Zero Usage received",
+        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
+        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
+        "received_at": "2026-07-16T05:31:30+00:00",
+        "importance": "high",
+        "has_attachments": true,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\nBilling Infra | Alerts Notification\r\n\r\nAutomated System Notification\r\n\r\nREQUIRES ATTENTION\r\n\r\nDear User,\r\n\r\nALERT ID        #3\r\n\r\nThe system has identified a list of product type I",
+        "is_read": false,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC8AAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 1,
+        "directed_to_me": false,
+        "conversation_id": "[prod-uk3] alert id 3: billing infra notification: zero usage received",
+        "thread_depth": 1,
+        "sender_relationship": "unknown",
+        "directed": false,
+        "urgency_score": 34.0,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "importance_flag",
+            "contribution": 10.0
+          },
+          {
+            "signal": "has_attachment",
+            "contribution": 5.0
+          }
+        ],
+        "confidence": "medium",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "detailed",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC7AAA=",
+        "subject": "[prod-uk3] Alert Id 14: Telemetry Notification : Missing client application ids in datalake",
+        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
+        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
+        "received_at": "2026-07-16T05:31:29+00:00",
+        "importance": "high",
+        "has_attachments": true,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\nTelemetry Notification\r\n\r\nAutomated System Notification\r\n\r\nREQUIRES ATTENTION\r\n\r\nDear User,\r\n\r\nALERT ID        #14\r\n\r\nSystem has identified missing client application ids in Datala",
+        "is_read": false,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC7AAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 1,
+        "directed_to_me": false,
+        "conversation_id": "[prod-uk3] alert id 14: telemetry notification : missing client application ids in datalake",
+        "thread_depth": 1,
+        "sender_relationship": "unknown",
+        "directed": false,
+        "urgency_score": 34.0,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "importance_flag",
+            "contribution": 10.0
+          },
+          {
+            "signal": "has_attachment",
+            "contribution": 5.0
+          }
+        ],
+        "confidence": "medium",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "detailed",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDFAAA=",
+        "subject": "Re: [nice-cxone/lambda-telemetry-auto-scaling-agent] TEL-4428 | Bootstrap repo to Telemetry standards (PR #1)",
+        "from_email": "notifications@github.com",
+        "from_name": "notifications@github.com",
+        "received_at": "2026-07-16T06:03:02+00:00",
+        "importance": "normal",
+        "has_attachments": false,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\n\r\n@Akshay-Narkhede-nice pushed 1 commit.\r\n\r\n  *   f834393 TEL-4428 | Updated\r\n\r\n\u2014\r\nView it on GitHub or unsubscribe.\r\nTriage notifications, keep track of coding agent tasks and rev",
+        "is_read": true,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDFAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 3,
         "directed_to_me": true,
-        "conversation_id": "snowflake user will be disabled soon",
-        "thread_depth": 2,
+        "conversation_id": "[nice-cxone/lambda-telemetry-auto-scaling-agent] tel-4428 | bootstrap repo to telemetry standards (pr #1)",
+        "thread_depth": 5,
         "sender_relationship": "unknown",
         "directed": false,
         "urgency_score": 30.0,
         "top_3_signals": [
           {
             "signal": "recency",
-            "contribution": 20.0
+            "contribution": 14.0
           },
           {
             "signal": "thread_depth",
-            "contribution": 4.0
+            "contribution": 10.0
           },
           {
             "signal": "sender_authority",
@@ -1491,266 +527,266 @@
         "priority_tier": "P3",
         "suggested_action": "Review when free",
         "reply_tone": "concise",
-        "effort_estimate": "quick",
-        "attn_kind": "",
-        "attn_reason": ""
-      }
-    ],
-    "P4": [
-      {
-        "id": "o18",
-        "subject": "Sparkathon 2026 - Security AWS Sparkathon Policies Update",
-        "from_email": "yoav.shulman@nice.com",
-        "from_name": "Yoav Shulman",
-        "received_at": "2026-07-15T19:49:26+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "AWS Sparkathon account policies clarification, mass distribution.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 20,
-        "directed_to_me": false,
-        "conversation_id": "sparkathon 2026 - security aws sparkathon policies update",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 29.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
+        "effort_estimate": "detailed",
         "attn_kind": "",
         "attn_reason": ""
       },
       {
-        "id": "o20",
-        "subject": "Congratulations Samidha Sawant - 2nd Work Anniversary",
-        "from_email": "seemit.shah@nice.com",
-        "from_name": "Seemit Shah",
-        "received_at": "2026-07-15T17:33:59+00:00",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDEAAA=",
+        "subject": "Indra Choudhari, your team is working on these pages -- join the conversation",
+        "from_email": "confluence@nice-general.atlassian.net",
+        "from_name": "Confluence",
+        "received_at": "2026-07-16T05:57:31+00:00",
         "importance": "normal",
         "has_attachments": false,
-        "body_preview": "Work anniversary greeting.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "congratulations samidha sawant - 2nd work anniversary",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 29.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o21",
-        "subject": "Prototype Submission Guidelines & AWS Account Instructions - CX - UPDATED GUIDELINES",
-        "from_email": "yoav.shulman@nice.com",
-        "from_name": "Yoav Shulman",
-        "received_at": "2026-07-15T17:06:34+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Sparkathon submission requirements update, mass distribution.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 9,
-        "directed_to_me": true,
-        "conversation_id": "prototype submission guidelines & aws account instructions - cx - updated guidelines",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 29.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o22",
-        "subject": "Congratulations Shubham Palve - 2nd Work Anniversary",
-        "from_email": "seemit.shah@nice.com",
-        "from_name": "Seemit Shah",
-        "received_at": "2026-07-15T16:32:22+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Work anniversary greeting.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "congratulations shubham palve - 2nd work anniversary",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 29.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o48",
-        "subject": "Re: CXone tag corrections needed \u2014 Billing Product tag (remaining resources)",
-        "from_email": "yogendra.suralkar@nice.com",
-        "from_name": "Yogendra Suralkar",
-        "received_at": "2026-07-15T06:51:18+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Production stacks updated, unused test buckets removed, dev account permission issue.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 2,
-        "directed_to_me": false,
-        "conversation_id": "cxone tag corrections needed \u2014 billing product tag (remaining resources)",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 29.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "empathetic",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o90",
-        "subject": "Platform and OSCI Workstream : Capacity Executive Summary Report : 14-July-2026 : Microservice Health of NA1 Region",
-        "from_email": "nilesh.awate@nice.com",
-        "from_name": "Nilesh Awate",
-        "received_at": "2026-07-14T10:05:24+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "Attached Capacity Executive Summary Report for 14-July-2026, automation bot.",
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\nStay connected to people and their work\r\nYour weekly content recommendations, ready to explore.\r\n\r\nAzure AWS SAML integration\r\nOwned by Or Maman\r\n\r\nMS Entra Auth CLI User Guide (Pu",
         "is_read": true,
-        "web_link": "",
-        "recipient_count": 10,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDEAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 1,
         "directed_to_me": true,
-        "conversation_id": "platform and osci workstream : capacity executive summary report : 14-july-2026 : microservice health of na1 region",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
+        "conversation_id": "indra choudhari, your team is working on these pages -- join the conversation",
+        "thread_depth": 2,
+        "sender_relationship": "external",
         "directed": true,
-        "urgency_score": 28.5,
+        "urgency_score": 30.0,
         "top_3_signals": [
           {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
             "signal": "sender_authority",
-            "contribution": 16.5
+            "contribution": 9.0
           },
           {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
+            "signal": "thread_depth",
+            "contribution": 4.0
           }
         ],
         "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "formal",
+        "effort_estimate": "quick",
         "attn_kind": "attn",
         "attn_reason": "For your attention"
       },
       {
-        "id": "o8",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDDAAA=",
+        "subject": "Re: [nice-cxone/lambda-telemetry-auto-scaling-agent] TEL-4428 | Bootstrap repo to Telemetry standards (PR #1)",
+        "from_email": "notifications@github.com",
+        "from_name": "notifications@github.com",
+        "received_at": "2026-07-16T05:54:18+00:00",
+        "importance": "normal",
+        "has_attachments": false,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\n\r\n@Akshay-Narkhede-nice pushed 1 commit.\r\n\r\n  *   cb4ae4f TEL-4428 | Updated\r\n\r\n\u2014\r\nView it on GitHub or unsubscribe.\r\nTriage notifications, keep track of coding agent tasks and rev",
+        "is_read": true,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDDAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 3,
+        "directed_to_me": true,
+        "conversation_id": "[nice-cxone/lambda-telemetry-auto-scaling-agent] tel-4428 | bootstrap repo to telemetry standards (pr #1)",
+        "thread_depth": 5,
+        "sender_relationship": "unknown",
+        "directed": false,
+        "urgency_score": 30.0,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "thread_depth",
+            "contribution": 10.0
+          },
+          {
+            "signal": "sender_authority",
+            "contribution": 3.0
+          }
+        ],
+        "confidence": "medium",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "detailed",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDCAAA=",
+        "subject": "Re: [nice-cxone/lambda-telemetry-auto-scaling-agent] TEL-4428 | Bootstrap repo to Telemetry standards (PR #1)",
+        "from_email": "notifications@github.com",
+        "from_name": "notifications@github.com",
+        "received_at": "2026-07-16T05:51:54+00:00",
+        "importance": "normal",
+        "has_attachments": false,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\n\r\n@Akshay-Narkhede-nice pushed 1 commit.\r\n\r\n  *   2ce9526 TEL-4428 | Add CF lint test environment file\r\n\r\n\u2014\r\nView it on GitHub or unsubscribe.\r\nTriage notifications, keep track of ",
+        "is_read": true,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDCAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 3,
+        "directed_to_me": true,
+        "conversation_id": "[nice-cxone/lambda-telemetry-auto-scaling-agent] tel-4428 | bootstrap repo to telemetry standards (pr #1)",
+        "thread_depth": 5,
+        "sender_relationship": "unknown",
+        "directed": false,
+        "urgency_score": 30.0,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "thread_depth",
+            "contribution": 10.0
+          },
+          {
+            "signal": "sender_authority",
+            "contribution": 3.0
+          }
+        ],
+        "confidence": "medium",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "detailed",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uDBAAA=",
+        "subject": "Re: [nice-cxone/lambda-telemetry-auto-scaling-agent] TEL-4428 | Bootstrap repo to Telemetry standards (PR #1)",
+        "from_email": "notifications@github.com",
+        "from_name": "notifications@github.com",
+        "received_at": "2026-07-16T05:46:51+00:00",
+        "importance": "normal",
+        "has_attachments": false,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\n\r\n@Akshay-Narkhede-nice pushed 1 commit.\r\n\r\n  *   1609259 TEL-4428 | Add CF validation and unit test workflows\r\n\r\n\u2014\r\nView it on GitHub or unsubscribe.\r\nTriage notifications, keep t",
+        "is_read": true,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDBAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 3,
+        "directed_to_me": true,
+        "conversation_id": "[nice-cxone/lambda-telemetry-auto-scaling-agent] tel-4428 | bootstrap repo to telemetry standards (pr #1)",
+        "thread_depth": 5,
+        "sender_relationship": "unknown",
+        "directed": false,
+        "urgency_score": 30.0,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "thread_depth",
+            "contribution": 10.0
+          },
+          {
+            "signal": "sender_authority",
+            "contribution": 3.0
+          }
+        ],
+        "confidence": "medium",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "detailed",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC-AAA=",
+        "subject": "Re: [nice-cxone/lambda-telemetry-auto-scaling-agent] TEL-4428 | Bootstrap repo to Telemetry standards (PR #1)",
+        "from_email": "notifications@github.com",
+        "from_name": "notifications@github.com",
+        "received_at": "2026-07-16T05:42:09+00:00",
+        "importance": "normal",
+        "has_attachments": false,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\n\r\n@Akshay-Narkhede-nice pushed 1 commit.\r\n\r\n  *   0f5bf9a TEL-4428 | Prefix test commands with python -m\r\n\r\n\u2014\r\nView it on GitHub or unsubscribe.\r\nTriage notifications, keep track o",
+        "is_read": true,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC%2FAAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 3,
+        "directed_to_me": true,
+        "conversation_id": "[nice-cxone/lambda-telemetry-auto-scaling-agent] tel-4428 | bootstrap repo to telemetry standards (pr #1)",
+        "thread_depth": 5,
+        "sender_relationship": "unknown",
+        "directed": false,
+        "urgency_score": 30.0,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "thread_depth",
+            "contribution": 10.0
+          },
+          {
+            "signal": "sender_authority",
+            "contribution": 3.0
+          }
+        ],
+        "confidence": "medium",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "concise",
+        "effort_estimate": "detailed",
+        "attn_kind": "",
+        "attn_reason": ""
+      },
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC2AAA=",
         "subject": "Indra Choudhari, your team is working on these pages -- join the conversation",
         "from_email": "confluence@nice-general.atlassian.net",
         "from_name": "Confluence",
         "received_at": "2026-07-16T04:18:34+00:00",
         "importance": "normal",
         "has_attachments": false,
-        "body_preview": "Confluence weekly content recommendations digest.",
-        "is_read": false,
-        "web_link": "",
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\nStay connected to people and their work\r\nYour weekly content recommendations, ready to explore.\r\n\r\nAzure AWS SAML integration\r\nOwned by Or Maman\r\n\r\nMS Entra Auth CLI User Guide (Pu",
+        "is_read": true,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC2AAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
         "recipient_count": 1,
         "directed_to_me": true,
         "conversation_id": "indra choudhari, your team is working on these pages -- join the conversation",
+        "thread_depth": 2,
+        "sender_relationship": "external",
+        "directed": true,
+        "urgency_score": 30.0,
+        "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
+          {
+            "signal": "sender_authority",
+            "contribution": 9.0
+          },
+          {
+            "signal": "thread_depth",
+            "contribution": 4.0
+          }
+        ],
+        "confidence": "high",
+        "priority_tier": "P3",
+        "suggested_action": "Review when free",
+        "reply_tone": "formal",
+        "effort_estimate": "quick",
+        "attn_kind": "attn",
+        "attn_reason": "For your attention"
+      }
+    ],
+    "P4": [
+      {
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC5AAA=",
+        "subject": "Learn the Do\u2019s & Don\u2019ts of Income Tax filing join our Webinar.",
+        "from_email": "consumers@updates.consumer.pluxee.in",
+        "from_name": "Consumers",
+        "received_at": "2026-07-16T05:00:47+00:00",
+        "importance": "normal",
+        "has_attachments": false,
+        "body_preview": "EXTERNAL EMAIL\r\n\r\n\r\n\r\n\r\n\r\nDear Consumer,\r\n\r\n\r\n\r\nTax filing doesn't have to be stressful - but even a small mistake can lead to missed tax savings, delayed refunds, or unnecessary tax notices . Join ou",
+        "is_read": false,
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC5AAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
+        "recipient_count": 1,
+        "directed_to_me": true,
+        "conversation_id": "learn the do\u2019s & don\u2019ts of income tax filing join our webinar.",
         "thread_depth": 1,
         "sender_relationship": "external",
         "directed": true,
@@ -1778,1904 +814,28 @@
         "attn_reason": "For your attention"
       },
       {
-        "id": "o71",
-        "subject": "RE: MyGlobal DB connectivity on Test US East (NA2) region",
-        "from_email": "hrishikesh.pachlag@nice.com",
-        "from_name": "Hrishikesh Pachlag",
-        "received_at": "2026-07-14T17:56:30+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "IPSec WFO side complete, adding Wilson for LAB DC side.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": false,
-        "conversation_id": "myglobal db connectivity on test us east (na2) region",
-        "thread_depth": 3,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 27.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 6.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o100",
-        "subject": "RE: MyGlobal DB connectivity on Test US East (NA2) region",
-        "from_email": "dhiraj.jadhav@nice.com",
-        "from_name": "Dhiraj Jadhav",
-        "received_at": "2026-07-14T06:57:43+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Check routing established between WFO account and Data Center.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 7,
-        "directed_to_me": false,
-        "conversation_id": "myglobal db connectivity on test us east (na2) region",
-        "thread_depth": 3,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 27.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 6.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o16",
-        "subject": "IC-Platform ic-prod-za sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-15T23:49:19+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod-za.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod-za sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 27.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 14.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o17",
-        "subject": "IC-Platform ic-prod-iesov1 sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-15T23:05:12+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod-iesov1.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod-iesov1 sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 27.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 14.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o49",
-        "subject": "Action Required: Platform Lib v14 End of Support",
-        "from_email": "cxoneplatformproductcommunication@nice.com",
-        "from_name": "cxoneplatformproductcommunication@nice.com",
-        "received_at": "2026-07-15T06:35:50+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Platform Lib v14 no longer supported starting Sprint 192.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "action required: platform lib v14 end of support",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 24.3,
-        "top_3_signals": [
-          {
-            "signal": "action_language",
-            "contribution": 8.32
-          },
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o52",
-        "subject": "[prod-uk3] Alert Id 16: Telemetry Notification : Null API PATH PATTERNS in datalake",
-        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "received_at": "2026-07-15T05:32:21+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Null API path patterns identified in Datalake, investigate.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "[prod-uk3] alert id 16: telemetry notification : null api path patterns in datalake",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 24.0,
-        "top_3_signals": [
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o53",
-        "subject": "[prod-uk3] Alert Id 14: Telemetry Notification : Missing client application ids in datalake",
-        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "received_at": "2026-07-15T05:32:21+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Missing client application ids in Datalake, investigate.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "[prod-uk3] alert id 14: telemetry notification : missing client application ids in datalake",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 24.0,
-        "top_3_signals": [
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o54",
-        "subject": "[prod-uk3] Alert Id 1: Billing Infra Notification: No Usage received",
-        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "received_at": "2026-07-15T05:32:20+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Product type IDs with no usage for last 5 days.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "[prod-uk3] alert id 1: billing infra notification: no usage received",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 24.0,
-        "top_3_signals": [
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o55",
-        "subject": "[prod-uk3] Alert Id 3: Billing Infra Notification: Zero Usage received",
-        "from_email": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "from_name": "noreply-business-alerts@opsnotify.nicecxone-sov2.uk",
-        "received_at": "2026-07-15T05:32:20+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Product type IDs with zero usage for last 5 days.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "[prod-uk3] alert id 3: billing infra notification: zero usage received",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 24.0,
-        "top_3_signals": [
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o51",
-        "subject": "Feature branch deployment on dev - saas-platform-ms-authentication-manager",
-        "from_email": "pavan.sonje@nice.com",
-        "from_name": "Pavan Sonje",
-        "received_at": "2026-07-15T06:10:21+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Feature branch deploy plan for auth-manager MS on DEV.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 5,
-        "directed_to_me": false,
-        "conversation_id": "feature branch deployment on dev - saas-platform-ms-authentication-manager",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 23.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o62",
-        "subject": "CX.26.4.IP (08Jul26) has been closed and CX.26.4.193 (15Jul26) has successfully been started",
-        "from_email": "mayur.ingale@nice.com",
-        "from_name": "Mayur Ingale",
-        "received_at": "2026-07-15T02:43:30+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Sprint IP closed - 1394 items completed, 3363 open carried forward.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 4,
-        "directed_to_me": false,
-        "conversation_id": "cx.26.4.ip (08jul26) has been closed and cx.26.4.193 (15jul26) has successfully been started",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 23.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o78",
-        "subject": "Prototype Submission Guidelines & AWS Account Instructions - CX",
-        "from_email": "yoav.shulman@nice.com",
-        "from_name": "Yoav Shulman",
-        "received_at": "2026-07-14T14:36:03+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Sparkathon guidelines - prototype submission part 1.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 8,
-        "directed_to_me": true,
-        "conversation_id": "prototype submission guidelines & aws account instructions - cx",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 23.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o83",
-        "subject": "Planned EC2 Base AMI Upgrade installing Cortex and Instance Refresh",
-        "from_email": "priyanka.nouduru@nice.com",
-        "from_name": "Priyanka Nouduru",
-        "received_at": "2026-07-14T13:17:40+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "EC2 base AMI upgrade with Cortex install across Platform clusters.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 4,
-        "directed_to_me": false,
-        "conversation_id": "planned ec2 base ami upgrade installing cortex and instance refresh",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 23.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o85",
-        "subject": "Re: Telemetry & Billing | 26.3 Release Achievements",
-        "from_email": "payal.bhalke@nice.com",
-        "from_name": "Payal Bhalke",
-        "received_at": "2026-07-14T11:35:49+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Key accomplishments from Release 26.3 - Billing and Telemetry automation, resiliency, scalability.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "telemetry & billing | 26.3 release achievements",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 23.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "fyi",
-        "attn_reason": "FYI - team update"
-      },
-      {
-        "id": "o88",
-        "subject": "RE: GATE Simulation overview",
-        "from_email": "rajdeep.jain@nice.com",
-        "from_name": "Rajdeep Jain",
-        "received_at": "2026-07-14T10:44:18+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Request not to reuse GATE_UserHub list name for testing.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": false,
-        "conversation_id": "gate simulation overview",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 23.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o95",
-        "subject": "CX Platform & OSCI S&C- Sprint Demo Nominations for Sprint 192",
-        "from_email": "sunny.deo@nice.com",
-        "from_name": "Sunny Deo",
-        "received_at": "2026-07-14T09:12:35+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Sprint 192 Demo Nominations request.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 6,
-        "directed_to_me": false,
-        "conversation_id": "cx platform & osci s&c- sprint demo nominations for sprint 192",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": false,
-        "urgency_score": 23.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o99",
-        "subject": "Indra, Check Out the July NiCE India Pulse!",
-        "from_email": "awan.roy@nice.com",
-        "from_name": "Awan Roy",
-        "received_at": "2026-07-14T07:05:31+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "NiCE India newsletter July edition.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "indra, check out the july nice india pulse!",
-        "thread_depth": 1,
-        "sender_relationship": "frequent",
-        "directed": true,
-        "urgency_score": 23.5,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 16.5
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "high",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "attn",
-        "attn_reason": "For your attention"
-      },
-      {
-        "id": "o9",
-        "subject": "Cafeteria Booking Update | July 16",
-        "from_email": "pune.facilities@nice.com",
-        "from_name": "pune.facilities@nice.com",
-        "received_at": "2026-07-16T03:20:53+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Cafeteria booked for Sparkathon event.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "cafeteria booking update | july 16",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 22.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 14.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o12",
-        "subject": "You have 3 mentions",
-        "from_email": "365-noreply@nice.com",
-        "from_name": "365-noreply@nice.com",
-        "received_at": "2026-07-16T02:59:11+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Teams mention digest - production-iesov1 failure mention.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "you have 3 mentions",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 22.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 14.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o13",
-        "subject": "\"Hello All - Which is a better opportunity: IBM B...\"",
-        "from_email": "community@digest.fishbowlapp.com",
-        "from_name": "community@digest.fishbowlapp.com",
-        "received_at": "2026-07-16T02:01:15+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Fishbowl community digest newsletter.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "\"hello all - which is a better opportunity: ibm b...\"",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 22.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 14.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o14",
-        "subject": "Your API Token is about to expire",
-        "from_email": "noreply@po.atlassian.net",
-        "from_name": "noreply@po.atlassian.net",
-        "received_at": "2026-07-16T00:58:54+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Jira API token expires 2026-07-17.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "your api token is about to expire",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 22.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 14.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o58",
-        "subject": "Important: Sparkathon 2026 Submission Guidelines",
-        "from_email": "innovation.gtc@nice.com",
-        "from_name": "innovation.gtc@nice.com",
-        "received_at": "2026-07-15T04:40:53+00:00",
-        "importance": "high",
-        "has_attachments": true,
-        "body_preview": "Submission guidelines document for Sparkathon.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 0,
-        "directed_to_me": false,
-        "conversation_id": "important: sparkathon 2026 submission guidelines",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 22.0,
-        "top_3_signals": [
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o43",
-        "subject": "IC-Platform prod-dst-msk sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-15T07:13:55+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on prod-dst-msk.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform prod-dst-msk sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 21.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o44",
-        "subject": "IC-Platform ic-prod-na3 sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-15T07:06:09+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod-na3.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod-na3 sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 21.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o45",
-        "subject": "IC-Platform ic-prod-fedramp sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-15T07:02:55+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod-fedramp.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod-fedramp sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 21.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o47",
-        "subject": "IC-Platform ic-prod sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-15T06:54:25+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 21.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o50",
-        "subject": "IC-Platform prod-na2-dst-msk sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-15T06:32:05+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on prod-na2-dst-msk.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform prod-na2-dst-msk sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 21.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o39",
-        "subject": "Monthly/deploySpecificBranch/July/test-de-msys/deploySpecificBranch-saas-platform-ms-billing-test-de-msys : Failed/Unstable on ( Deploy to Testing/eu-central-1 msys ) !",
-        "from_email": "cxone-ci.jenkins@devops.niceincontact.com",
-        "from_name": "cxone-ci.jenkins@devops.niceincontact.com",
-        "received_at": "2026-07-15T08:55:06+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "BUILD FAILURE Jenkins job saas-platform-ms-billing test-de-msys.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "monthly/deployspecificbranch/july/test-de-msys/deployspecificbranch-saas-platform-ms-billing-test-de-msys : failed/unstable on ( deploy to testing/eu-central-1 msys ) !",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 18.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o40",
-        "subject": "Monthly/deploySpecificBranch/July/test-de-msys/deploySpecificBranch-saas-platform-ms-billing-test-de-msys : Failed/Unstable on ( Deploy to Testing/eu-central-1 msys ) !",
-        "from_email": "cxone-ci.jenkins@devops.niceincontact.com",
-        "from_name": "cxone-ci.jenkins@devops.niceincontact.com",
-        "received_at": "2026-07-15T08:55:03+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "BUILD FAILURE Jenkins job saas-platform-ms-billing test-de-msys (duplicate).",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "monthly/deployspecificbranch/july/test-de-msys/deployspecificbranch-saas-platform-ms-billing-test-de-msys : failed/unstable on ( deploy to testing/eu-central-1 msys ) !",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 18.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o67",
-        "subject": "IMPORTANT: Installing Cortex XDR on all Dev DO Machines!",
-        "from_email": "releasemanagementteamsharedmailbox@nice.com",
-        "from_name": "releasemanagementteamsharedmailbox@nice.com",
-        "received_at": "2026-07-14T23:00:08+00:00",
-        "importance": "high",
-        "has_attachments": false,
-        "body_preview": "Replacing Cybereason with Cortex XDR on Dev DO machines, two restarts.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 5,
-        "directed_to_me": false,
-        "conversation_id": "important: installing cortex xdr on all dev do machines!",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 17.0,
-        "top_3_signals": [
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o75",
-        "subject": "IT - Technical Issue -Email Delivery Issues to External Recipients",
-        "from_email": "itannouncements@nice.com",
-        "from_name": "itannouncements@nice.com",
-        "received_at": "2026-07-14T16:03:10+00:00",
-        "importance": "high",
-        "has_attachments": false,
-        "body_preview": "External email bounce-back technical issue notice.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "it - technical issue -email delivery issues to external recipients",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 17.0,
-        "top_3_signals": [
-          {
-            "signal": "importance_flag",
-            "contribution": 10.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "empathetic",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o19",
-        "subject": "Design Smarter Solutions Through AI & ML Expertise \ud83d\udc49",
-        "from_email": "updates@simplilearnmailer.com",
-        "from_name": "updates@simplilearnmailer.com",
-        "received_at": "2026-07-15T17:56:25+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Marketing email - AI/ML course.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "design smarter solutions through ai & ml expertise \ud83d\udc49",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 16.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o28",
-        "subject": "Sparkathon 2026 | Fuel Up With Lunch and Sweet Treats",
-        "from_email": "innovation.gtc@nice.com",
-        "from_name": "innovation.gtc@nice.com",
-        "received_at": "2026-07-15T14:06:12+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Sparkathon Day 2 lunch announcement.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 0,
-        "directed_to_me": false,
-        "conversation_id": "sparkathon 2026 | fuel up with lunch and sweet treats",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 16.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o29",
-        "subject": "You have 2 mentions",
-        "from_email": "365-noreply@nice.com",
-        "from_name": "365-noreply@nice.com",
-        "received_at": "2026-07-15T12:57:26+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Teams mention digest - ExpertAI no longer working.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "you have 2 mentions",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 16.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o33",
-        "subject": "NiCE Ltd. Daily Digest",
-        "from_email": "noreply_nice@engage.mail.microsoft",
-        "from_name": "noreply_nice@engage.mail.microsoft",
-        "received_at": "2026-07-15T11:21:28+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Viva Engage daily digest.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "nice ltd. daily digest",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 16.0,
-        "top_3_signals": [
-          {
-            "signal": "recency",
-            "contribution": 8.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o64",
-        "subject": "MSTR License Usage Report eu-west-1",
-        "from_email": "noreply-mstr-license-usage@opsnotify.nicecxone.com",
-        "from_name": "noreply-mstr-license-usage@opsnotify.nicecxone.com",
-        "received_at": "2026-07-14T23:33:34+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "MSTR License Usage Report attached, production-iesov1.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 2,
-        "directed_to_me": false,
-        "conversation_id": "mstr license usage report eu-west-1",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 15.0,
-        "top_3_signals": [
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o65",
-        "subject": "IC-Platform ic-prod-eusov1 sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-14T23:21:40+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod-eusov1.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod-eusov1 sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 15.0,
-        "top_3_signals": [
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o66",
-        "subject": "MSTR License Usage Report eu-central-1",
-        "from_email": "noreply-mstr-license-usage@opsnotify.nicecxone-sov1.eu",
-        "from_name": "noreply-mstr-license-usage@opsnotify.nicecxone-sov1.eu",
-        "received_at": "2026-07-14T23:06:18+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "MSTR License Usage Report attached, production-eusov1.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 2,
-        "directed_to_me": false,
-        "conversation_id": "mstr license usage report eu-central-1",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 15.0,
-        "top_3_signals": [
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o68",
-        "subject": "IC-Platform ic-prod-uk3 sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-14T20:31:06+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod-uk3.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod-uk3 sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 15.0,
-        "top_3_signals": [
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o72",
-        "subject": "MSTR License Usage Report ap-northeast-2",
-        "from_email": "noreply-mstr-license-usage@opsnotify.nicecxone.com",
-        "from_name": "noreply-mstr-license-usage@opsnotify.nicecxone.com",
-        "received_at": "2026-07-14T16:27:05+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "MSTR License Usage Report attached, production-kr.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 2,
-        "directed_to_me": false,
-        "conversation_id": "mstr license usage report ap-northeast-2",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 15.0,
-        "top_3_signals": [
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o76",
-        "subject": "IC-Platform ic-prod-jo sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-14T15:39:22+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod-jo.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod-jo sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 15.0,
-        "top_3_signals": [
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o77",
-        "subject": "IC-Platform ic-prod-kr sprint/192 Deployment completed !",
-        "from_email": "pipelineinfraautomationeast@nice.com",
-        "from_name": "pipelineinfraautomationeast@nice.com",
-        "received_at": "2026-07-14T15:39:06+00:00",
-        "importance": "normal",
-        "has_attachments": true,
-        "body_preview": "IC Deployment Notification sprint-192 on ic-prod-kr.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 3,
-        "directed_to_me": false,
-        "conversation_id": "ic-platform ic-prod-kr sprint/192 deployment completed !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 15.0,
-        "top_3_signals": [
-          {
-            "signal": "has_attachment",
-            "contribution": 5.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o59",
+        "id": "AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS-ST73kRkSH0NKmBwC0-nQPHqrEQrt3ohXY_gaXAAAAAAEMAAC0-nQPHqrEQrt3ohXY_gaXAAPK8uC4AAA=",
         "subject": "Snowflake User Will be Disabled Soon",
         "from_email": "infratools@niceincontact.com",
         "from_name": "infratools@niceincontact.com",
-        "received_at": "2026-07-15T04:21:43+00:00",
+        "received_at": "2026-07-16T04:55:29+00:00",
         "importance": "normal",
         "has_attachments": false,
-        "body_preview": "Snowflake account cxone_na1 inactive 85+ days, disabled at 90 days.",
+        "body_preview": "Hello Indra.Choudhari@nice.com,\r\n\r\nYour Snowflake User on Snowflake Account cxone_na1 is inactive for more than 85 days.\r\nYour Snowflake User will be disabled when it is inactive for 90 Days as per th",
         "is_read": false,
-        "web_link": "",
+        "web_link": "https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uC4AAA%3D&exvsurl=1&viewmodel=ReadMessageItem",
         "recipient_count": 1,
         "directed_to_me": true,
         "conversation_id": "snowflake user will be disabled soon",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 12.0,
-        "top_3_signals": [
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o92",
-        "subject": "Monthly/deploySpecificBranch/July/dev/deploySpecificBranch-lambda-billing-api-overage-notifier-dev : Success !",
-        "from_email": "cxone-ci.jenkins@devops.niceincontact.com",
-        "from_name": "cxone-ci.jenkins@devops.niceincontact.com",
-        "received_at": "2026-07-14T09:40:44+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "BUILD SUCCESS lambda-billing-api-overage-notifier-dev.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 2,
-        "directed_to_me": false,
-        "conversation_id": "monthly/deployspecificbranch/july/dev/deployspecificbranch-lambda-billing-api-overage-notifier-dev : success !",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 12.0,
-        "top_3_signals": [
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o93",
-        "subject": "Monthly/deploySpecificBranch/July/dev/deploySpecificBranch-lambda-billing-api-overage-notifier-dev : Success !",
-        "from_email": "cxone-ci.jenkins@devops.niceincontact.com",
-        "from_name": "cxone-ci.jenkins@devops.niceincontact.com",
-        "received_at": "2026-07-14T09:40:42+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "BUILD SUCCESS (duplicate).",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 2,
-        "directed_to_me": false,
-        "conversation_id": "monthly/deployspecificbranch/july/dev/deployspecificbranch-lambda-billing-api-overage-notifier-dev : success !",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 12.0,
-        "top_3_signals": [
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o96",
-        "subject": "Monthly/deploySpecificBranch/July/dev/deploySpecificBranch-billing-data-lake-registrations-dev : Success !",
-        "from_email": "cxone-ci.jenkins@devops.niceincontact.com",
-        "from_name": "cxone-ci.jenkins@devops.niceincontact.com",
-        "received_at": "2026-07-14T09:10:59+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "BUILD SUCCESS billing-data-lake-registrations-dev.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "monthly/deployspecificbranch/july/dev/deployspecificbranch-billing-data-lake-registrations-dev : success !",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 12.0,
-        "top_3_signals": [
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o97",
-        "subject": "Monthly/deploySpecificBranch/July/dev/deploySpecificBranch-billing-data-lake-registrations-dev : Success !",
-        "from_email": "cxone-ci.jenkins@devops.niceincontact.com",
-        "from_name": "cxone-ci.jenkins@devops.niceincontact.com",
-        "received_at": "2026-07-14T09:10:54+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "BUILD SUCCESS (duplicate).",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "monthly/deployspecificbranch/july/dev/deployspecificbranch-billing-data-lake-registrations-dev : success !",
-        "thread_depth": 2,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 12.0,
-        "top_3_signals": [
-          {
-            "signal": "thread_depth",
-            "contribution": 4.0
-          },
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o60",
-        "subject": "Cafeteria Booking Update | July 15",
-        "from_email": "pune.facilities@nice.com",
-        "from_name": "pune.facilities@nice.com",
-        "received_at": "2026-07-15T03:08:10+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Cafeteria booked for Sparkathon.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "cafeteria booking update | july 15",
         "thread_depth": 1,
         "sender_relationship": "unknown",
         "directed": false,
-        "urgency_score": 10.0,
+        "urgency_score": 22.0,
         "top_3_signals": [
+          {
+            "signal": "recency",
+            "contribution": 14.0
+          },
           {
             "signal": "sender_authority",
             "contribution": 3.0
@@ -3683,450 +843,6 @@
           {
             "signal": "importance_flag",
             "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o61",
-        "subject": "\"Hi I got 2 offers need to choose 1. 1. TCS 11.5 ...\"",
-        "from_email": "industry@digest.fishbowlapp.com",
-        "from_name": "industry@digest.fishbowlapp.com",
-        "received_at": "2026-07-15T03:00:32+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Fishbowl community digest newsletter.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "\"hi i got 2 offers need to choose 1. 1. tcs 11.5 ...\"",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o63",
-        "subject": "Akshay Narkhede mentioned everyone in a chat in Microsoft Teams",
-        "from_email": "365-noreply@nice.com",
-        "from_name": "365-noreply@nice.com",
-        "received_at": "2026-07-15T02:13:52+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Teams mention - three Lambda component failures on production-eusov1.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "akshay narkhede mentioned everyone in a chat in microsoft teams",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o69",
-        "subject": "IT - Restoration - Email Delivery Issues to External Recipients",
-        "from_email": "itannouncements@nice.com",
-        "from_name": "itannouncements@nice.com",
-        "received_at": "2026-07-14T20:11:12+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "External email bounce-back issue resolved.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "it - restoration - email delivery issues to external recipients",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "empathetic",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o70",
-        "subject": "Aboli Avadhani sent a message",
-        "from_email": "365-noreply@nice.com",
-        "from_name": "365-noreply@nice.com",
-        "received_at": "2026-07-14T18:22:46+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Teams message - comparison of planned vs actual for 26.3.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "aboli avadhani sent a message",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o81",
-        "subject": "Reminder: Complete Your Self-Assessment",
-        "from_email": "growpro@nice.com",
-        "from_name": "growpro@nice.com",
-        "received_at": "2026-07-14T13:58:34+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Complete GrowPro Check-in Self-Assessment by July 15.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 2,
-        "directed_to_me": false,
-        "conversation_id": "reminder: complete your self-assessment",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o82",
-        "subject": "Sparkathon 2026 | 1 Day to Go!",
-        "from_email": "innovation.gtc@nice.com",
-        "from_name": "innovation.gtc@nice.com",
-        "received_at": "2026-07-14T13:36:08+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Conference rooms available for Sparkathon.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 0,
-        "directed_to_me": false,
-        "conversation_id": "sparkathon 2026 | 1 day to go!",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o86",
-        "subject": "NiCE Ltd. Weekly Digest",
-        "from_email": "noreply_nice@engage.mail.microsoft",
-        "from_name": "noreply_nice@engage.mail.microsoft",
-        "received_at": "2026-07-14T11:21:20+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Viva Engage weekly digest.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": true,
-        "conversation_id": "nice ltd. weekly digest",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o89",
-        "subject": "Trailblazers, Your Sparkathon 2026 Tee Awaits!",
-        "from_email": "innovation.gtc@nice.com",
-        "from_name": "innovation.gtc@nice.com",
-        "received_at": "2026-07-14T10:12:39+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Sparkathon tee reward for completed submissions.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 0,
-        "directed_to_me": false,
-        "conversation_id": "trailblazers, your sparkathon 2026 tee awaits!",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o91",
-        "subject": "Got a Dog or a Cat? We Have a NiCE Surprise for You!",
-        "from_email": "life@nice.com",
-        "from_name": "life@nice.com",
-        "received_at": "2026-07-14T09:56:12+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "Employee engagement pet event.",
-        "is_read": true,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "got a dog or a cat? we have a nice surprise for you!",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o94",
-        "subject": "Re: [nice-cxone/lambda-billing-api-overage-notifier] BIL-7203 changes for templates (PR #6)",
-        "from_email": "notifications@github.com",
-        "from_name": "notifications@github.com",
-        "received_at": "2026-07-14T09:30:56+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "GitHub push notification, commit pushed to PR #6.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 2,
-        "directed_to_me": true,
-        "conversation_id": "[nice-cxone/lambda-billing-api-overage-notifier] bil-7203 changes for templates (pr #6)",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
-          }
-        ],
-        "confidence": "medium",
-        "priority_tier": "P4",
-        "suggested_action": "Archive / no action",
-        "reply_tone": "concise",
-        "effort_estimate": "none",
-        "attn_kind": "",
-        "attn_reason": ""
-      },
-      {
-        "id": "o98",
-        "subject": "Monthly/deploySpecificBranch/July/test-de-msys/deploySpecificBranch-cloud-formation-billing-env-store-test-de-msys : Success !",
-        "from_email": "cxone-ci.jenkins@devops.niceincontact.com",
-        "from_name": "cxone-ci.jenkins@devops.niceincontact.com",
-        "received_at": "2026-07-14T09:10:00+00:00",
-        "importance": "normal",
-        "has_attachments": false,
-        "body_preview": "BUILD SUCCESS cloud-formation-billing-env-store.",
-        "is_read": false,
-        "web_link": "",
-        "recipient_count": 1,
-        "directed_to_me": false,
-        "conversation_id": "monthly/deployspecificbranch/july/test-de-msys/deployspecificbranch-cloud-formation-billing-env-store-test-de-msys : success !",
-        "thread_depth": 1,
-        "sender_relationship": "unknown",
-        "directed": false,
-        "urgency_score": 10.0,
-        "top_3_signals": [
-          {
-            "signal": "sender_authority",
-            "contribution": 3.0
-          },
-          {
-            "signal": "importance_flag",
-            "contribution": 3.0
-          },
-          {
-            "signal": "recency",
-            "contribution": 2.0
           }
         ],
         "confidence": "medium",
