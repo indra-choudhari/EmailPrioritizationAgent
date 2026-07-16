@@ -1,0 +1,50 @@
+{
+  "_comment": "EmailPrioritizationAgent config (connector mode). Mail is fetched via the Microsoft 365 connector — no Azure app or credentials needed. See HELP-CONFIG.md.",
+  "mailbox": "me",
+  "folder": "Inbox",
+  "since_hours": 24,
+  "local": true,
+  "output_dir": "./reports",
+  "user_email": "indra.choudhari@nice.com",
+  "directed_recipient_max": 15,
+  "atlassian_cloud_id": null,
+  "internal_domains": ["nice.com", "niceincontact.com"],
+  "vip_senders": [],
+  "manager_emails": ["aboli.avadhani@nice.com"],
+  "high_priority_keywords": [
+    "urgent", "action required", "action needed", "P0", "P1",
+    "incident", "outage", "deadline", "by EOD", "by end of day",
+    "ASAP", "immediately", "critical", "blocker", "approval needed",
+    "please review", "your input needed", "waiting on you",
+    "could you please", "can you please", "please share", "please send",
+    "please provide", "please confirm", "could you share", "can you share"
+  ],
+  "sla_floor_keywords": [
+    "by EOD", "by end of day", "by 5pm", "by 6pm", "today", "this morning",
+    "before noon", "before lunch", "time sensitive"
+  ],
+  "priority_keyword_floors": {
+    "P1": ["critical"],
+    "P2": ["urgent"]
+  },
+  "onboarding_floor_tier": "P2",
+  "onboarding_subject_keywords": ["onboarding"],
+  "onboarding_text_keywords": ["prod_type_id", "product type onboarding", "onboarding request"],
+  "empathy_keywords": [
+    "concern", "issue", "problem", "frustrated", "worried", "disappointed",
+    "complaint", "escalation"
+  ],
+  "weights": {
+    "sender_authority": 0.30,
+    "action_language":  0.25,
+    "recency":          0.20,
+    "thread_depth":     0.10,
+    "importance_flag":  0.10,
+    "has_attachment":   0.05
+  },
+  "recency_buckets_hours": {
+    "very_recent": 2,
+    "recent": 8,
+    "today": 24
+  }
+}
