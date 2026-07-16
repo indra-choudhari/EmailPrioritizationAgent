@@ -1,0 +1,5 @@
+# Connector mode: mail is fetched by Claude via the Microsoft 365 connector.
+# The scoring pipeline uses only the Python standard library — no third-party
+# packages, no MSAL, no Microsoft Graph SDK.
+#
+# (Intentionally empty.)

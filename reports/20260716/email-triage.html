@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Email Triage — EmailPrioritizationAgent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --font-head:"Sora",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --violet:#7c5cfc; --indigo:#6366f1; --cyan:#06b6d4; --green:#10b981; --amber:#f59e0b; --pink:#ec4899;
+  /* status (validated dataviz status palette) */
+  --p1:#d03b3b; --p2:#ec835a; --p3:#eda100; --p4:#64748b;
+  /* categorical (validated dataviz slots 1-6) */
+  --c1:#2a78d6; --c2:#008300; --c3:#e87ba4; --c4:#eda100; --c5:#1baf7a; --c6:#eb6834;
+}
+:root[data-theme="light"]{
+  --bg1:#f4f2ff; --bg2:#eef8ff; --bg3:#fef6fb;
+  --card:#ffffff; --card-2:#faf9ff;
+  --ink:#171532; --ink-2:#565478; --muted:#8b89a6;
+  --line:rgba(23,21,50,.09); --line-2:rgba(23,21,50,.06);
+  --shadow:0 1px 2px rgba(23,21,50,.04),0 8px 24px rgba(89,73,196,.08);
+  --shadow-lg:0 2px 6px rgba(23,21,50,.05),0 18px 48px rgba(89,73,196,.14);
+  --chip:#f2f0fb;
+}
+:root[data-theme="dark"]{
+  --bg1:#0d0b1a; --bg2:#0b1220; --bg3:#150e1c;
+  --card:#17152a; --card-2:#1d1a35;
+  --ink:#f4f3ff; --ink-2:#b9b6d6; --muted:#7d7a9c;
+  --line:rgba(255,255,255,.10); --line-2:rgba(255,255,255,.06);
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 10px 30px rgba(0,0,0,.35);
+  --shadow-lg:0 2px 8px rgba(0,0,0,.5),0 22px 60px rgba(0,0,0,.5);
+  --chip:#231f3f;
+  /* dark categorical steps (validated for dark surface) */
+  --c1:#3987e5; --c2:#008300; --c3:#d55181; --c4:#c98500; --c5:#199e70; --c6:#d95926;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  font-family:var(--font-body); color:var(--ink);
+  background:
+    radial-gradient(1200px 600px at 12% -8%, var(--bg1), transparent 60%),
+    radial-gradient(1000px 620px at 100% 0%, var(--bg2), transparent 55%),
+    radial-gradient(900px 700px at 50% 120%, var(--bg3), transparent 60%),
+    var(--card-2);
+  background-attachment:fixed;
+  min-height:100vh; line-height:1.45; -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.num{font-family:var(--font-head); letter-spacing:-.01em}
+a{color:inherit}
+.wrap{max-width:1240px; margin:0 auto; padding:22px 22px 64px}
+
+.fade{opacity:0; transform:translateY(10px); animation:rise .55s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes rise{to{opacity:1; transform:none}}
+
+header.top{display:flex; align-items:center; gap:16px; flex-wrap:wrap; margin-bottom:20px}
+.avatar{width:52px;height:52px;border-radius:16px;flex:none;display:grid;place-items:center;
+  font-family:var(--font-head);font-weight:700;font-size:22px;color:#fff;
+  background:linear-gradient(135deg,var(--violet),var(--cyan));box-shadow:0 8px 20px rgba(124,92,252,.4)}
+.greet{flex:1 1 auto;min-width:240px}
+.greet h1{margin:0;font-size:26px;font-weight:700}
+.greet h1 .nm{background:linear-gradient(90deg,var(--violet),var(--indigo),var(--cyan));-webkit-background-clip:text;background-clip:text;color:transparent}
+.greet .sub{color:var(--ink-2);font-size:13.5px;margin-top:3px;display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.dot{width:4px;height:4px;border-radius:50%;background:var(--muted);display:inline-block}
+.hbtns{display:flex;gap:9px;flex-wrap:wrap}
+.btn{font-family:var(--font-body);font-weight:600;font-size:13px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink);padding:9px 14px;border-radius:12px;cursor:pointer;
+  box-shadow:var(--shadow);transition:transform .12s ease, box-shadow .12s ease}
+.btn:hover{transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+.btn.primary{background:linear-gradient(135deg,var(--violet),var(--indigo));color:#fff;border:none}
+.btn.ghost{background:transparent;box-shadow:none}
+
+.incband{margin-bottom:16px;background:rgba(237,161,0,.12);border:1px solid rgba(237,161,0,.3);border-left:4px solid var(--p3);border-radius:14px;padding:12px 16px;font-size:13px;color:var(--ink-2);display:none}
+.incband.on{display:block}
+.incband b{color:var(--ink)}
+.waiting{margin-bottom:18px}
+.wtitle{display:flex;align-items:center;gap:10px;margin:0 2px 12px}
+.wtitle h2{font-size:17px;margin:0;font-weight:700;display:flex;align-items:center;gap:9px}
+.wtitle .pill{background:linear-gradient(135deg,var(--violet),var(--indigo));color:#fff;font-size:12px;font-weight:700;padding:3px 10px;border-radius:999px}
+.wtitle .sub{color:var(--ink-2);font-size:12.5px;margin-left:auto}
+.awaitlist{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.arow{display:flex;align-items:center;gap:13px;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--violet);border-radius:15px;padding:13px 15px;box-shadow:var(--shadow);cursor:pointer;transition:transform .12s,box-shadow .12s}
+.arow:hover{transform:translateY(-1px);box-shadow:var(--shadow-lg)}
+.arow .senav{width:40px;height:40px;border-radius:12px}
+.arow .mid{flex:1 1 auto;min-width:0}
+.arow .subj{font-weight:600;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arow .l2{color:var(--ink-2);font-size:12.5px;margin-top:3px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rchip{font-size:11px;font-weight:800;padding:4px 9px;border-radius:8px;white-space:nowrap;letter-spacing:.02em}
+.rk-reply{background:rgba(99,102,241,.14);color:var(--indigo)}
+.rk-meeting{background:rgba(124,92,252,.14);color:var(--violet)}
+.rk-fyi{background:var(--chip);color:var(--ink-2)}
+.rk-cancel{background:rgba(208,59,59,.12);color:var(--p1)}
+.arow .inst{font-size:10.5px;font-weight:700;color:var(--muted);background:var(--chip);padding:2px 7px;border-radius:6px}
+.tome{font-size:10.5px;font-weight:700;color:var(--green);background:rgba(16,185,129,.14);padding:2px 7px;border-radius:6px}
+.draftready{font-size:10.5px;font-weight:700;color:var(--indigo);background:rgba(99,102,241,.14);padding:2px 7px;border-radius:6px}
+.urgentnote{margin:12px 4px 0;background:var(--card);border:1px solid var(--line);border-left:4px solid var(--p3);border-radius:14px;padding:12px 15px;font-size:12.5px;color:var(--ink-2);box-shadow:var(--shadow)}
+.urgentnote b{color:var(--ink);font-weight:700}
+.arow .go{flex:none;font-family:var(--font-body);font-weight:700;font-size:12px;color:var(--violet);background:var(--chip);border:none;padding:8px 12px;border-radius:10px;cursor:pointer;white-space:nowrap}
+.arow .ascore{flex:none;font-family:var(--font-head);font-weight:800;font-size:16px;min-width:44px;text-align:right}
+
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:18px}
+.kpi{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:16px 18px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.kpi .cap{font-size:12.5px;color:var(--ink-2);font-weight:600;display:flex;align-items:center;gap:8px}
+.kpi .val{font-size:34px;font-weight:800;margin-top:6px;line-height:1}
+.kpi .foot{font-size:11.5px;color:var(--muted);margin-top:6px}
+.kpi .ic{width:30px;height:30px;border-radius:9px;display:grid;place-items:center;font-size:15px}
+.kpi .bar{position:absolute;left:0;bottom:0;height:4px;width:100%}
+
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:18px;align-items:start}
+.grid>*{min-width:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow)}
+.card .hd{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:16px 18px 10px}
+.card .hd h3{margin:0;font-size:15.5px;font-weight:700;display:flex;align-items:center;gap:9px}
+.card .hd .meta{font-size:12px;color:var(--muted);font-weight:600}
+
+.band{display:flex;align-items:center;gap:10px;padding:12px 18px;margin:2px 0;position:sticky;top:0}
+.band .lbl{font-family:var(--font-head);font-weight:700;font-size:13px;letter-spacing:.02em}
+.band .cnt{font-size:12px;color:var(--muted);font-weight:600}
+.tierdot{width:10px;height:10px;border-radius:3px}
+
+.rows{padding:4px 12px 12px}
+.row{display:flex;gap:13px;padding:13px 12px;border-radius:14px;cursor:pointer;border:1px solid transparent;transition:background .12s,border-color .12s,transform .12s}
+.row:hover{background:var(--card-2);border-color:var(--line-2);transform:translateX(2px)}
+.row .rail{width:4px;border-radius:4px;flex:none}
+.senav{width:38px;height:38px;border-radius:11px;flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:14px;font-family:var(--font-head)}
+.row .mid{flex:1 1 auto;min-width:0}
+.row .subj{font-weight:600;font-size:14px;display:flex;align-items:center;gap:8px;min-width:0}
+.row .subj .txt{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.row .line2{color:var(--ink-2);font-size:12.5px;margin-top:2px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.row .sigs{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+.sig{font-size:11px;font-weight:600;background:var(--chip);color:var(--ink-2);padding:3px 8px;border-radius:7px;white-space:nowrap}
+.sig b{color:var(--ink);font-weight:700}
+.row .right{flex:none;text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:8px;min-width:96px}
+.scorewrap{width:92px}
+.scorewrap .n{font-family:var(--font-head);font-weight:800;font-size:18px;line-height:1}
+.scorewrap .track{height:6px;border-radius:6px;background:var(--chip);margin-top:5px;overflow:hidden}
+.scorewrap .fill{height:100%;border-radius:6px}
+.actpill{font-size:11px;font-weight:700;padding:5px 9px;border-radius:8px;white-space:nowrap}
+.badge{font-size:10px;font-weight:800;letter-spacing:.04em;padding:3px 7px;border-radius:6px;text-transform:uppercase}
+.tag{font-size:10.5px;font-weight:700;padding:2px 7px;border-radius:6px;display:inline-flex;align-items:center;gap:4px}
+.tag.unread{background:rgba(124,92,252,.14);color:var(--violet)}
+.tag.att{background:var(--chip);color:var(--ink-2)}
+.tag.hi{background:rgba(208,59,59,.12);color:var(--p1)}
+.tag.auto{background:rgba(237,161,0,.16);color:#9a6b00}
+:root[data-theme="dark"] .tag.auto{color:#f3c04d}
+.collapsed .rows{display:none}
+.toggle{cursor:pointer;user-select:none;color:var(--violet);font-size:12px;font-weight:700;background:none;border:none;font-family:var(--font-body)}
+
+.rail-cards{display:flex;flex-direction:column;gap:18px}
+.legend{padding:6px 18px 18px}
+.lg{display:flex;align-items:center;gap:10px;padding:7px 0;font-size:13px;border-top:1px solid var(--line-2)}
+.lg:first-child{border-top:none}
+.lg .sw{width:11px;height:11px;border-radius:4px;flex:none}
+.lg .nm{flex:1 1 auto;font-weight:600}
+.lg .ct{font-weight:700;font-variant-numeric:tabular-nums}
+.lg .pc{color:var(--muted);font-size:12px;width:42px;text-align:right;font-variant-numeric:tabular-nums}
+.donut-wrap{display:grid;place-items:center;padding:8px 0 2px}
+.tierbar{display:flex;height:16px;border-radius:8px;overflow:hidden;margin:2px 18px 12px;gap:2px;background:transparent}
+.tierbar span{height:100%}
+.tstats{display:flex;gap:8px;padding:0 18px 16px;flex-wrap:wrap}
+.tstat{flex:1 1 60px;background:var(--card-2);border:1px solid var(--line-2);border-radius:12px;padding:9px 10px;text-align:center}
+.tstat .n{font-family:var(--font-head);font-weight:800;font-size:20px}
+.tstat .l{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em;margin-top:2px}
+.scan{padding:6px 18px 18px;font-size:12.5px;color:var(--ink-2)}
+.scan .r{display:flex;justify-content:space-between;padding:6px 0;border-top:1px solid var(--line-2)}
+.scan .r:first-child{border-top:none}
+.scan .r b{color:var(--ink);font-weight:700}
+.note{margin:0 18px 16px;background:rgba(237,161,0,.10);border:1px solid rgba(237,161,0,.25);border-radius:12px;padding:11px 13px;font-size:12px;color:var(--ink-2)}
+.note b{color:var(--ink)}
+
+.ov{position:fixed;inset:0;background:rgba(15,12,35,.5);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;padding:20px;z-index:50}
+.ov.on{display:flex}
+.modal{background:var(--card);border-radius:22px;max-width:640px;width:100%;max-height:88vh;overflow:auto;box-shadow:var(--shadow-lg);border:1px solid var(--line)}
+.modal .mh{padding:20px 22px 14px;border-bottom:1px solid var(--line-2);position:relative}
+.modal .mh .badge{margin-bottom:8px;display:inline-block}
+.modal .mh h2{font-size:19px;margin:0 0 8px}
+.modal .mh .from{font-size:13px;color:var(--ink-2)}
+.modal .mb{padding:16px 22px 6px}
+.mblock{margin-bottom:16px}
+.mblock .t{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:7px;display:flex;align-items:center;gap:7px}
+.mblock .txt{font-size:14px;color:var(--ink);background:var(--card-2);border:1px solid var(--line-2);border-radius:12px;padding:13px 15px;line-height:1.55}
+.whygrid{display:flex;gap:8px;flex-wrap:wrap}
+.whychip{font-size:12px;font-weight:600;background:var(--chip);padding:7px 11px;border-radius:10px}
+.whychip b{font-family:var(--font-head)}
+.recgrid{display:flex;gap:10px;flex-wrap:wrap}
+.rec{flex:1 1 120px;background:var(--card-2);border:1px solid var(--line-2);border-radius:12px;padding:11px 13px}
+.rec .l{font-size:10.5px;font-weight:700;color:var(--muted);text-transform:uppercase;letter-spacing:.05em}
+.rec .v{font-weight:700;font-size:14px;margin-top:3px;text-transform:capitalize}
+.mf{padding:12px 22px 20px;display:flex;gap:10px;justify-content:flex-end;position:sticky;bottom:0;background:linear-gradient(to top,var(--card),var(--card) 70%,transparent)}
+.close{position:absolute;top:16px;right:18px;background:var(--chip);border:none;width:32px;height:32px;border-radius:10px;cursor:pointer;font-size:16px;color:var(--ink-2)}
+
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:var(--card);font-size:12px;font-weight:600;padding:6px 9px;border-radius:8px;opacity:0;transition:opacity .1s;z-index:60;white-space:nowrap}
+.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:26px}
+
+@media(max-width:980px){
+  .grid{grid-template-columns:1fr}
+  .kpis{grid-template-columns:repeat(2,1fr)}
+}
+@media(max-width:560px){.kpis{grid-template-columns:1fr 1fr}.row .sigs{display:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top fade" style="animation-delay:.02s">
+    <div class="avatar" id="ava">A</div>
+    <div class="greet">
+      <h1 id="greet">Good day <span class="nm">there</span> 👋</h1>
+      <div class="sub" id="submeta"></div>
+    </div>
+    <div class="hbtns">
+      <button class="btn ghost" id="themeBtn" title="Toggle theme">🌙 Theme</button>
+      <button class="btn" id="focusBtn">✋ Directed</button>
+      <button class="btn primary" id="outlookBtn">↗ Open Outlook</button>
+    </div>
+  </header>
+
+  <div class="incband" id="incBand"></div>
+
+  <section class="waiting fade" style="animation-delay:.06s">
+    <div class="wtitle">
+      <h2>✋ Directed at You <span class="pill" id="wcount">0</span></h2>
+      <span class="sub">sent to you personally or your small team — mass distribution lists excluded</span>
+    </div>
+    <div class="card"><div class="awaitlist" id="awaitlist" style="padding:8px"></div></div>
+    <div class="urgentnote" id="urgentNote"></div>
+  </section>
+
+  <section class="kpis fade" style="animation-delay:.1s" id="kpis"></section>
+
+  <div class="grid">
+    <main class="card fade" style="animation-delay:.14s">
+      <div class="hd">
+        <h3>📥 Priority Inbox</h3>
+        <span class="meta" id="inboxMeta"></span>
+      </div>
+      <div id="tiers"></div>
+    </main>
+
+    <aside class="rail-cards fade" style="animation-delay:.18s">
+      <div class="card">
+        <div class="hd"><h3>🍩 Inbox Breakdown</h3><span class="meta" id="catMeta"></span></div>
+        <div class="donut-wrap"><div id="donut"></div></div>
+        <div class="legend" id="catLegend"></div>
+      </div>
+      <div class="card">
+        <div class="hd"><h3>📊 Priority Mix</h3><span class="meta">by tier</span></div>
+        <div class="tierbar" id="tierbar"></div>
+        <div class="tstats" id="tstats"></div>
+        <div class="note" id="autoNote"></div>
+      </div>
+      <div class="card">
+        <div class="hd"><h3>🔎 Scan Details</h3></div>
+        <div class="scan" id="scan"></div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="footer">Generated by <b>EmailPrioritizationAgent</b> · Microsoft 365 connector (read-only) · multi-signal urgency model</div>
+</div>
+
+<div class="ov" id="ov"><div class="modal" id="modal"></div></div>
+<div class="tip" id="tip"></div>
+
+<script>
+const RAW = {"meta":{"scan_iso":"2026-07-16T06:24:52.330930+00:00","folder":"Inbox","since_hours":48,"scored":103,"fetched":103,"unread":74,"attachments":28,"high_importance":13,"user_name":"Indra Choudhari","counts":{"P1":1,"P2":2,"P3":34,"P4":66},"incomplete":false,"incomplete_reason":""},"items":[{"id":"o37","tier":"P1","subject":"Re: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region","from_name":"Guru Majgaonkar","from_email":"guru.majgaonkar@nice.com","received_at":"2026-07-15T10:30:05+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Asks who owns action item for critical service, added to Capacity agent?","score":45.8,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"action_language","c":8.3}],"relationship":"frequent","action":"Reply now","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":true,"promoted_by":"critical","confidence":"high","directed":true,"recipient_count":9,"attn_kind":"reply","attn_reason":"Reply needed"},{"id":"o124","tier":"P2","subject":"PI Planning Status","from_name":"Atish Sharma","from_email":"atish.sharma@nice.com","received_at":"2026-07-16T05:44:08+00:00","importance":"normal","has_attachments":true,"is_read":true,"body_preview":"Could you please share the Billing & Telemetry PI planning status & confluence pages for 26.4 release?","score":63.2,"signals":[{"s":"recency","c":20.0},{"s":"action_language","c":16.7},{"s":"sender_authority","c":16.5}],"relationship":"frequent","action":"Reply today","tone":"concise","effort":"detailed","thread_depth":1,"web_link":"https://outlook.office365.com/owa/?ItemID=AAMkADkzZWIzZmY3LTEzMzItNDM5Zi04OTRlLTdiNmNjNzZmNTdiNQBGAAAAAABx5y92IS%2FST73kRkSH0NKmBwC0%2FnQPHqrEQrt3ohXY%2BgaXAAAAAAEMAAC0%2FnQPHqrEQrt3ohXY%2BgaXAAPK8uDAAAA%3D&exvsurl=1&viewmodel=ReadMessageItem","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":1,"attn_kind":"reply","attn_reason":"Reply needed"},{"id":"o46","tier":"P2","subject":"urgent : need help","from_name":"Abhishek Patankar","from_email":"abhishek.patankar@nice.com","received_at":"2026-07-15T06:57:08+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"urgent : need help. Regards, Abhishek Patankar.","score":37.8,"signals":[{"s":"sender_authority","c":16.5},{"s":"action_language","c":8.3},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Reply today","tone":"concise","effort":"medium","thread_depth":1,"web_link":"","promoted":true,"promoted_by":"urgent","confidence":"high","directed":true,"recipient_count":1,"attn_kind":"reply","attn_reason":"Reply needed"},{"id":"o10","tier":"P3","subject":"[Tel/Bil] QA - Dev Transition Plan","from_name":"Aboli Avadhani","from_email":"aboli.avadhani@nice.com","received_at":"2026-07-16T03:16:33+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Please come up with draft plan to cross train Dev and QA members during 26.4 release and let's finalize with measurable goals and ETA.","score":43.0,"signals":[{"s":"sender_authority","c":24.0},{"s":"recency","c":14.0},{"s":"importance_flag","c":3.0}],"relationship":"manager","action":"Review when free","tone":"formal","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":5,"attn_kind":"fyi","attn_reason":"FYI - team update"},{"id":"o11","tier":"P3","subject":"Internal Review Tel/Bil 26.4 release plan","from_name":"Aboli Avadhani","from_email":"aboli.avadhani@nice.com","received_at":"2026-07-16T03:12:29+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Teams meeting invite for internal review of 26.4 release plan.","score":43.0,"signals":[{"s":"sender_authority","c":24.0},{"s":"recency","c":14.0},{"s":"importance_flag","c":3.0}],"relationship":"manager","action":"Review when free","tone":"formal","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":6,"attn_kind":"fyi","attn_reason":"FYI - team update"},{"id":"o35","tier":"P3","subject":"RE: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region","from_name":"Vipul Aglawe","from_email":"vipul.aglawe@nice.com","received_at":"2026-07-15T10:45:29+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"Service belongs to UH-Exoplanet team, was green on 14th, CPU 10% triggered red, 90% remaining.","score":42.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":9,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o36","tier":"P3","subject":"RE: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region","from_name":"Vipul Aglawe","from_email":"vipul.aglawe@nice.com","received_at":"2026-07-15T10:41:01+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"Reply in thread, signature only.","score":42.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":9,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o38","tier":"P3","subject":"Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region","from_name":"Nilesh Awate","from_email":"nilesh.awate@nice.com","received_at":"2026-07-15T10:12:19+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"Attached Capacity Executive Summary Report for 15-July-2026, automation bot.","score":42.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":10,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o0","tier":"P3","subject":"[prod-uk3] Alert Id 1: Billing Infra Notification: No Usage received","from_name":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","from_email":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","received_at":"2026-07-16T05:31:32+00:00","importance":"high","has_attachments":true,"is_read":false,"body_preview":"Automated System Notification. Product type IDs with no usage for last 5 days.","score":42.0,"signals":[{"s":"recency","c":20.0},{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0}],"relationship":"unknown","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o1","tier":"P3","subject":"[prod-uk3] Alert Id 16: Telemetry Notification : Null API PATH PATTERNS in datalake","from_name":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","from_email":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","received_at":"2026-07-16T05:31:31+00:00","importance":"high","has_attachments":true,"is_read":false,"body_preview":"Null API path patterns identified in Datalake, investigate.","score":42.0,"signals":[{"s":"recency","c":20.0},{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0}],"relationship":"unknown","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o2","tier":"P3","subject":"[prod-uk3] Alert Id 3: Billing Infra Notification: Zero Usage received","from_name":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","from_email":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","received_at":"2026-07-16T05:31:30+00:00","importance":"high","has_attachments":true,"is_read":false,"body_preview":"Product type IDs with zero usage for last 5 days.","score":42.0,"signals":[{"s":"recency","c":20.0},{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0}],"relationship":"unknown","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o3","tier":"P3","subject":"[prod-uk3] Alert Id 14: Telemetry Notification : Missing client application ids in datalake","from_name":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","from_email":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","received_at":"2026-07-16T05:31:29+00:00","importance":"high","has_attachments":true,"is_read":false,"body_preview":"Missing client application ids in Datalake, investigate.","score":42.0,"signals":[{"s":"recency","c":20.0},{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0}],"relationship":"unknown","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o4","tier":"P3","subject":"REMINDER: CX Platform & OSCI S&C- Sprint Demo Nominations for Sprint 192","from_name":"Sunny Deo","from_email":"sunny.deo@nice.com","received_at":"2026-07-16T05:08:22+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Sprint 192 Demo Nominations reminder.","score":41.5,"signals":[{"s":"recency","c":20.0},{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o7","tier":"P3","subject":"Happy Birthday Shital !!!","from_name":"Sunny Deo","from_email":"sunny.deo@nice.com","received_at":"2026-07-16T04:31:27+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Birthday greeting.","score":41.5,"signals":[{"s":"recency","c":20.0},{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":4,"attn_kind":"","attn_reason":""},{"id":"o56","tier":"P3","subject":"Canceled: Telemetry/Billing - Flow Meeting Series [Discovery Team]","from_name":"Aboli Avadhani","from_email":"aboli.avadhani@nice.com","received_at":"2026-07-15T05:01:39+00:00","importance":"high","has_attachments":false,"is_read":false,"body_preview":"Meeting cancellation.","score":38.0,"signals":[{"s":"sender_authority","c":24.0},{"s":"importance_flag","c":10.0},{"s":"recency","c":2.0}],"relationship":"manager","action":"Review when free","tone":"formal","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":10,"attn_kind":"cancel","attn_reason":"Meeting cancelled"},{"id":"o57","tier":"P3","subject":"Canceled: [Tel/Bil] Weekly Sync: Jira updates and Epics status","from_name":"Aboli Avadhani","from_email":"aboli.avadhani@nice.com","received_at":"2026-07-15T05:01:10+00:00","importance":"high","has_attachments":false,"is_read":false,"body_preview":"Meeting cancellation.","score":38.0,"signals":[{"s":"sender_authority","c":24.0},{"s":"importance_flag","c":10.0},{"s":"recency","c":2.0}],"relationship":"manager","action":"Review when free","tone":"formal","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":4,"attn_kind":"cancel","attn_reason":"Meeting cancelled"},{"id":"o23","tier":"P3","subject":"RE: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)","from_name":"Yogesh Patil3","from_email":"yogesh.patil3@nice.com","received_at":"2026-07-15T16:20:23+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Thread on Digital Usage Report channel dependency, adding Dominik.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":6,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":14,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o24","tier":"P3","subject":"Re: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)","from_name":"Arulmurugan Ganesan","from_email":"arulmurugan.ganesan@nice.com","received_at":"2026-07-15T14:52:18+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Option to decode channel names in separate field for dashboard team.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":6,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":13,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o25","tier":"P3","subject":"RE: Test US East (NA2) BCP Region MyGlobal Billing Credentials","from_name":"Jeremy Allen","from_email":"jeremy.allen@nice.com","received_at":"2026-07-15T14:45:24+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"DB credentials request should go to DBA DevOps team, quiet this thread.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":8,"attn_kind":"","attn_reason":""},{"id":"o26","tier":"P3","subject":"Re: Test US East (NA2) BCP Region MyGlobal Billing Credentials","from_name":"Joseph Giordano","from_email":"joseph.giordano@nice.com","received_at":"2026-07-15T14:37:17+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"No access to server info, SysOps can help.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":8,"attn_kind":"","attn_reason":""},{"id":"o27","tier":"P3","subject":"Re: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)","from_name":"Chetan Supekar","from_email":"chetan.supekar@nice.com","received_at":"2026-07-15T14:29:54+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Confirms 2 widgets need channel data, asks Nat Harward re architects.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":6,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":13,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o30","tier":"P3","subject":"RE: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region","from_name":"Nilesh Awate","from_email":"nilesh.awate@nice.com","received_at":"2026-07-15T12:41:42+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"segment-context-manager-service 3-day growth 3629.1%, CPU 8.2%, explains red status.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":9,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o31","tier":"P3","subject":"Re: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)","from_name":"Arulmurugan Ganesan","from_email":"arulmurugan.ganesan@nice.com","received_at":"2026-07-15T12:36:03+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Asks if requirement exists to show channel in report display.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":6,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":13,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o32","tier":"P3","subject":"RE: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region","from_name":"Sajid Memon","from_email":"sajid.memon@nice.com","received_at":"2026-07-15T11:26:26+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Investigate as stated, tuning needed - RED vs recommendation mismatch.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":9,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o34","tier":"P3","subject":"Re: Platform and OSCI Workstream : Capacity Executive Summary Report : 15-July-2026 : Microservice Health of NA1 Region","from_name":"Guru Majgaonkar","from_email":"guru.majgaonkar@nice.com","received_at":"2026-07-15T10:56:10+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"CPU not the reason for red, 3-day traffic 6997.9% is - investigate.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":9,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o42","tier":"P3","subject":"RE: Test US East (NA2) BCP Region MyGlobal Billing Credentials","from_name":"Dhiraj Jadhav","from_email":"dhiraj.jadhav@nice.com","received_at":"2026-07-15T08:36:11+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Asks Joe for credentials for global database users and server IPs.","score":37.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"recency","c":8.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o15","tier":"P3","subject":"[Platform] Sprint/192 ic-prod-za Deployment-Done","from_name":"Indranil Biswas","from_email":"indranil.biswas@nice.com","received_at":"2026-07-16T00:24:46+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Deployment for Group-1 Platform (ic-prod-za) Sprint/192 completed.","score":35.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"recency","c":14.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o5","tier":"P3","subject":"Learn the Do's & Don'ts of Income Tax filing join our Webinar.","from_name":"Consumers","from_email":"consumers@updates.consumer.pluxee.in","received_at":"2026-07-16T05:00:47+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Marketing webinar invite - tax filing.","score":34.0,"signals":[{"s":"recency","c":20.0},{"s":"sender_authority","c":9.0},{"s":"importance_flag","c":3.0}],"relationship":"external","action":"Review when free","tone":"formal","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":1,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o41","tier":"P3","subject":"RE: MyGlobal DB connectivity on Test US East (NA2) region","from_name":"Dhiraj Jadhav","from_email":"dhiraj.jadhav@nice.com","received_at":"2026-07-15T08:40:45+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Thanks for update, please keep posted on IPSec connection creation.","score":33.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"recency","c":8.0},{"s":"thread_depth","c":6.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"quick","thread_depth":3,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":9,"attn_kind":"","attn_reason":""},{"id":"o73","tier":"P3","subject":"Re: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)","from_name":"Chetan Supekar","from_email":"chetan.supekar@nice.com","received_at":"2026-07-14T16:09:48+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"This is a showstopper for Digital Usage Report - channel details needed for WhatsApp filtering.","score":31.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":6,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":13,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o79","tier":"P3","subject":"Re: Test US East (NA2) BCP Region MyGlobal Billing Credentials","from_name":"Perry Whittle","from_email":"perry.whittle@nice.com","received_at":"2026-07-14T14:22:01+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Confirms ticket was for uksov only.","score":31.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o80","tier":"P3","subject":"Re: Test US East (NA2) BCP Region MyGlobal Billing Credentials","from_name":"Joseph Giordano","from_email":"joseph.giordano@nice.com","received_at":"2026-07-14T14:08:43+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Refers to ServiceNow RITM0098046, password supplied by Perry May 18.","score":31.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o84","tier":"P3","subject":"Re: Test US East (NA2) BCP Region MyGlobal Billing Credentials","from_name":"Joseph Giordano","from_email":"joseph.giordano@nice.com","received_at":"2026-07-14T12:52:18+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Looking into how it needs to be handled, no server access yet.","score":31.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o87","tier":"P3","subject":"RE: Dependency on BIL-8533 for Digital Usage Report (CXDV-71801)","from_name":"Yogesh Patil3","from_email":"yogesh.patil3@nice.com","received_at":"2026-07-14T10:49:15+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"DFO sends channel type code, not actual channel name, refiner process needed.","score":31.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":6,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":13,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o101","tier":"P3","subject":"RE: Test US East (NA2) BCP Region MyGlobal Billing Credentials","from_name":"Dhiraj Jadhav","from_email":"dhiraj.jadhav@nice.com","received_at":"2026-07-14T06:44:45+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Need connection details/credentials for MyGlobal instance NA2 region.","score":31.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":10.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Review when free","tone":"concise","effort":"detailed","thread_depth":7,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o74","tier":"P3","subject":"Fw: Reminder: Designate Your Resilience Testing Specialist (RTS) by July 14 for Resilience Experiments + Game Day Program","from_name":"Aboli Avadhani","from_email":"aboli.avadhani@nice.com","received_at":"2026-07-14T16:08:14+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Additional ask for 26.4 planning, create separate epic to track.","score":31.0,"signals":[{"s":"sender_authority","c":24.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"manager","action":"Review when free","tone":"formal","effort":"quick","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":4,"attn_kind":"","attn_reason":""},{"id":"o6","tier":"P3","subject":"Snowflake User Will be Disabled Soon","from_name":"infratools@niceincontact.com","from_email":"infratools@niceincontact.com","received_at":"2026-07-16T04:55:29+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Snowflake account cxone_na1 inactive 85+ days, disabled at 90 days.","score":30.0,"signals":[{"s":"recency","c":20.0},{"s":"thread_depth","c":4.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Review when free","tone":"concise","effort":"quick","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o18","tier":"P4","subject":"Sparkathon 2026 - Security AWS Sparkathon Policies Update","from_name":"Yoav Shulman","from_email":"yoav.shulman@nice.com","received_at":"2026-07-15T19:49:26+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"AWS Sparkathon account policies clarification, mass distribution.","score":29.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"recency","c":8.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":20,"attn_kind":"","attn_reason":""},{"id":"o20","tier":"P4","subject":"Congratulations Samidha Sawant - 2nd Work Anniversary","from_name":"Seemit Shah","from_email":"seemit.shah@nice.com","received_at":"2026-07-15T17:33:59+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Work anniversary greeting.","score":29.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"recency","c":8.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o21","tier":"P4","subject":"Prototype Submission Guidelines & AWS Account Instructions - CX - UPDATED GUIDELINES","from_name":"Yoav Shulman","from_email":"yoav.shulman@nice.com","received_at":"2026-07-15T17:06:34+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Sparkathon submission requirements update, mass distribution.","score":29.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"recency","c":8.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":9,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o22","tier":"P4","subject":"Congratulations Shubham Palve - 2nd Work Anniversary","from_name":"Seemit Shah","from_email":"seemit.shah@nice.com","received_at":"2026-07-15T16:32:22+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Work anniversary greeting.","score":29.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"recency","c":8.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o48","tier":"P4","subject":"Re: CXone tag corrections needed \u2014 Billing Product tag (remaining resources)","from_name":"Yogendra Suralkar","from_email":"yogendra.suralkar@nice.com","received_at":"2026-07-15T06:51:18+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Production stacks updated, unused test buckets removed, dev account permission issue.","score":29.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"recency","c":8.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Archive / no action","tone":"empathetic","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":2,"attn_kind":"","attn_reason":""},{"id":"o90","tier":"P4","subject":"Platform and OSCI Workstream : Capacity Executive Summary Report : 14-July-2026 : Microservice Health of NA1 Region","from_name":"Nilesh Awate","from_email":"nilesh.awate@nice.com","received_at":"2026-07-14T10:05:24+00:00","importance":"normal","has_attachments":true,"is_read":true,"body_preview":"Attached Capacity Executive Summary Report for 14-July-2026, automation bot.","score":28.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"has_attachment","c":5.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":10,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o8","tier":"P4","subject":"Indra Choudhari, your team is working on these pages -- join the conversation","from_name":"Confluence","from_email":"confluence@nice-general.atlassian.net","received_at":"2026-07-16T04:18:34+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Confluence weekly content recommendations digest.","score":28.0,"signals":[{"s":"recency","c":14.0},{"s":"sender_authority","c":9.0},{"s":"importance_flag","c":3.0}],"relationship":"external","action":"Archive / no action","tone":"formal","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":1,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o71","tier":"P4","subject":"RE: MyGlobal DB connectivity on Test US East (NA2) region","from_name":"Hrishikesh Pachlag","from_email":"hrishikesh.pachlag@nice.com","received_at":"2026-07-14T17:56:30+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"IPSec WFO side complete, adding Wilson for LAB DC side.","score":27.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":6.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":3,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o100","tier":"P4","subject":"RE: MyGlobal DB connectivity on Test US East (NA2) region","from_name":"Dhiraj Jadhav","from_email":"dhiraj.jadhav@nice.com","received_at":"2026-07-14T06:57:43+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Check routing established between WFO account and Data Center.","score":27.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"thread_depth","c":6.0},{"s":"importance_flag","c":3.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":3,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":7,"attn_kind":"","attn_reason":""},{"id":"o16","tier":"P4","subject":"IC-Platform ic-prod-za sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-15T23:49:19+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod-za.","score":27.0,"signals":[{"s":"recency","c":14.0},{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o17","tier":"P4","subject":"IC-Platform ic-prod-iesov1 sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-15T23:05:12+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod-iesov1.","score":27.0,"signals":[{"s":"recency","c":14.0},{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o49","tier":"P4","subject":"Action Required: Platform Lib v14 End of Support","from_name":"cxoneplatformproductcommunication@nice.com","from_email":"cxoneplatformproductcommunication@nice.com","received_at":"2026-07-15T06:35:50+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Platform Lib v14 no longer supported starting Sprint 192.","score":24.3,"signals":[{"s":"action_language","c":8.3},{"s":"recency","c":8.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o52","tier":"P4","subject":"[prod-uk3] Alert Id 16: Telemetry Notification : Null API PATH PATTERNS in datalake","from_name":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","from_email":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","received_at":"2026-07-15T05:32:21+00:00","importance":"high","has_attachments":true,"is_read":true,"body_preview":"Null API path patterns identified in Datalake, investigate.","score":24.0,"signals":[{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0},{"s":"thread_depth","c":4.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o53","tier":"P4","subject":"[prod-uk3] Alert Id 14: Telemetry Notification : Missing client application ids in datalake","from_name":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","from_email":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","received_at":"2026-07-15T05:32:21+00:00","importance":"high","has_attachments":true,"is_read":true,"body_preview":"Missing client application ids in Datalake, investigate.","score":24.0,"signals":[{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0},{"s":"thread_depth","c":4.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o54","tier":"P4","subject":"[prod-uk3] Alert Id 1: Billing Infra Notification: No Usage received","from_name":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","from_email":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","received_at":"2026-07-15T05:32:20+00:00","importance":"high","has_attachments":true,"is_read":false,"body_preview":"Product type IDs with no usage for last 5 days.","score":24.0,"signals":[{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0},{"s":"thread_depth","c":4.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o55","tier":"P4","subject":"[prod-uk3] Alert Id 3: Billing Infra Notification: Zero Usage received","from_name":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","from_email":"noreply-business-alerts@opsnotify.nicecxone-sov2.uk","received_at":"2026-07-15T05:32:20+00:00","importance":"high","has_attachments":true,"is_read":false,"body_preview":"Product type IDs with zero usage for last 5 days.","score":24.0,"signals":[{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0},{"s":"thread_depth","c":4.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o51","tier":"P4","subject":"Feature branch deployment on dev - saas-platform-ms-authentication-manager","from_name":"Pavan Sonje","from_email":"pavan.sonje@nice.com","received_at":"2026-07-15T06:10:21+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Feature branch deploy plan for auth-manager MS on DEV.","score":23.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":5,"attn_kind":"","attn_reason":""},{"id":"o62","tier":"P4","subject":"CX.26.4.IP (08Jul26) has been closed and CX.26.4.193 (15Jul26) has successfully been started","from_name":"Mayur Ingale","from_email":"mayur.ingale@nice.com","received_at":"2026-07-15T02:43:30+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Sprint IP closed - 1394 items completed, 3363 open carried forward.","score":23.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":4,"attn_kind":"","attn_reason":""},{"id":"o78","tier":"P4","subject":"Prototype Submission Guidelines & AWS Account Instructions - CX","from_name":"Yoav Shulman","from_email":"yoav.shulman@nice.com","received_at":"2026-07-14T14:36:03+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Sparkathon guidelines - prototype submission part 1.","score":23.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":8,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o83","tier":"P4","subject":"Planned EC2 Base AMI Upgrade installing Cortex and Instance Refresh","from_name":"Priyanka Nouduru","from_email":"priyanka.nouduru@nice.com","received_at":"2026-07-14T13:17:40+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"EC2 base AMI upgrade with Cortex install across Platform clusters.","score":23.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":4,"attn_kind":"","attn_reason":""},{"id":"o85","tier":"P4","subject":"Re: Telemetry & Billing | 26.3 Release Achievements","from_name":"Payal Bhalke","from_email":"payal.bhalke@nice.com","received_at":"2026-07-14T11:35:49+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Key accomplishments from Release 26.3 - Billing and Telemetry automation, resiliency, scalability.","score":23.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":1,"attn_kind":"fyi","attn_reason":"FYI - team update"},{"id":"o88","tier":"P4","subject":"RE: GATE Simulation overview","from_name":"Rajdeep Jain","from_email":"rajdeep.jain@nice.com","received_at":"2026-07-14T10:44:18+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Request not to reuse GATE_UserHub list name for testing.","score":23.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o95","tier":"P4","subject":"CX Platform & OSCI S&C- Sprint Demo Nominations for Sprint 192","from_name":"Sunny Deo","from_email":"sunny.deo@nice.com","received_at":"2026-07-14T09:12:35+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Sprint 192 Demo Nominations request.","score":23.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":false,"recipient_count":6,"attn_kind":"","attn_reason":""},{"id":"o99","tier":"P4","subject":"Indra, Check Out the July NiCE India Pulse!","from_name":"Awan Roy","from_email":"awan.roy@nice.com","received_at":"2026-07-14T07:05:31+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"NiCE India newsletter July edition.","score":23.5,"signals":[{"s":"sender_authority","c":16.5},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"frequent","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"high","directed":true,"recipient_count":1,"attn_kind":"attn","attn_reason":"For your attention"},{"id":"o9","tier":"P4","subject":"Cafeteria Booking Update | July 16","from_name":"pune.facilities@nice.com","from_email":"pune.facilities@nice.com","received_at":"2026-07-16T03:20:53+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Cafeteria booked for Sparkathon event.","score":22.0,"signals":[{"s":"recency","c":14.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o12","tier":"P4","subject":"You have 3 mentions","from_name":"365-noreply@nice.com","from_email":"365-noreply@nice.com","received_at":"2026-07-16T02:59:11+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Teams mention digest - production-iesov1 failure mention.","score":22.0,"signals":[{"s":"recency","c":14.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o13","tier":"P4","subject":"\"Hello All - Which is a better opportunity: IBM B...\"","from_name":"community@digest.fishbowlapp.com","from_email":"community@digest.fishbowlapp.com","received_at":"2026-07-16T02:01:15+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Fishbowl community digest newsletter.","score":22.0,"signals":[{"s":"recency","c":14.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o14","tier":"P4","subject":"Your API Token is about to expire","from_name":"noreply@po.atlassian.net","from_email":"noreply@po.atlassian.net","received_at":"2026-07-16T00:58:54+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Jira API token expires 2026-07-17.","score":22.0,"signals":[{"s":"recency","c":14.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o58","tier":"P4","subject":"Important: Sparkathon 2026 Submission Guidelines","from_name":"innovation.gtc@nice.com","from_email":"innovation.gtc@nice.com","received_at":"2026-07-15T04:40:53+00:00","importance":"high","has_attachments":true,"is_read":true,"body_preview":"Submission guidelines document for Sparkathon.","score":22.0,"signals":[{"s":"importance_flag","c":10.0},{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":0,"attn_kind":"","attn_reason":""},{"id":"o43","tier":"P4","subject":"IC-Platform prod-dst-msk sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-15T07:13:55+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on prod-dst-msk.","score":21.0,"signals":[{"s":"recency","c":8.0},{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o44","tier":"P4","subject":"IC-Platform ic-prod-na3 sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-15T07:06:09+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod-na3.","score":21.0,"signals":[{"s":"recency","c":8.0},{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o45","tier":"P4","subject":"IC-Platform ic-prod-fedramp sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-15T07:02:55+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod-fedramp.","score":21.0,"signals":[{"s":"recency","c":8.0},{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o47","tier":"P4","subject":"IC-Platform ic-prod sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-15T06:54:25+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod.","score":21.0,"signals":[{"s":"recency","c":8.0},{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o50","tier":"P4","subject":"IC-Platform prod-na2-dst-msk sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-15T06:32:05+00:00","importance":"normal","has_attachments":true,"is_read":true,"body_preview":"IC Deployment Notification sprint-192 on prod-na2-dst-msk.","score":21.0,"signals":[{"s":"recency","c":8.0},{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o39","tier":"P4","subject":"Monthly/deploySpecificBranch/July/test-de-msys/deploySpecificBranch-saas-platform-ms-billing-test-de-msys : Failed/Unstable on ( Deploy to Testing/eu-central-1 msys ) !","from_name":"cxone-ci.jenkins@devops.niceincontact.com","from_email":"cxone-ci.jenkins@devops.niceincontact.com","received_at":"2026-07-15T08:55:06+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"BUILD FAILURE Jenkins job saas-platform-ms-billing test-de-msys.","score":18.0,"signals":[{"s":"recency","c":8.0},{"s":"thread_depth","c":4.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o40","tier":"P4","subject":"Monthly/deploySpecificBranch/July/test-de-msys/deploySpecificBranch-saas-platform-ms-billing-test-de-msys : Failed/Unstable on ( Deploy to Testing/eu-central-1 msys ) !","from_name":"cxone-ci.jenkins@devops.niceincontact.com","from_email":"cxone-ci.jenkins@devops.niceincontact.com","received_at":"2026-07-15T08:55:03+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"BUILD FAILURE Jenkins job saas-platform-ms-billing test-de-msys (duplicate).","score":18.0,"signals":[{"s":"recency","c":8.0},{"s":"thread_depth","c":4.0},{"s":"sender_authority","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o67","tier":"P4","subject":"IMPORTANT: Installing Cortex XDR on all Dev DO Machines!","from_name":"releasemanagementteamsharedmailbox@nice.com","from_email":"releasemanagementteamsharedmailbox@nice.com","received_at":"2026-07-14T23:00:08+00:00","importance":"high","has_attachments":false,"is_read":false,"body_preview":"Replacing Cybereason with Cortex XDR on Dev DO machines, two restarts.","score":17.0,"signals":[{"s":"importance_flag","c":10.0},{"s":"sender_authority","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":5,"attn_kind":"","attn_reason":""},{"id":"o75","tier":"P4","subject":"IT - Technical Issue -Email Delivery Issues to External Recipients","from_name":"itannouncements@nice.com","from_email":"itannouncements@nice.com","received_at":"2026-07-14T16:03:10+00:00","importance":"high","has_attachments":false,"is_read":true,"body_preview":"External email bounce-back technical issue notice.","score":17.0,"signals":[{"s":"importance_flag","c":10.0},{"s":"sender_authority","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"empathetic","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o19","tier":"P4","subject":"Design Smarter Solutions Through AI & ML Expertise \ud83d\udc49","from_name":"updates@simplilearnmailer.com","from_email":"updates@simplilearnmailer.com","received_at":"2026-07-15T17:56:25+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Marketing email - AI/ML course.","score":16.0,"signals":[{"s":"recency","c":8.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o28","tier":"P4","subject":"Sparkathon 2026 | Fuel Up With Lunch and Sweet Treats","from_name":"innovation.gtc@nice.com","from_email":"innovation.gtc@nice.com","received_at":"2026-07-15T14:06:12+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Sparkathon Day 2 lunch announcement.","score":16.0,"signals":[{"s":"recency","c":8.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":0,"attn_kind":"","attn_reason":""},{"id":"o29","tier":"P4","subject":"You have 2 mentions","from_name":"365-noreply@nice.com","from_email":"365-noreply@nice.com","received_at":"2026-07-15T12:57:26+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Teams mention digest - ExpertAI no longer working.","score":16.0,"signals":[{"s":"recency","c":8.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o33","tier":"P4","subject":"NiCE Ltd. Daily Digest","from_name":"noreply_nice@engage.mail.microsoft","from_email":"noreply_nice@engage.mail.microsoft","received_at":"2026-07-15T11:21:28+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Viva Engage daily digest.","score":16.0,"signals":[{"s":"recency","c":8.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o64","tier":"P4","subject":"MSTR License Usage Report eu-west-1","from_name":"noreply-mstr-license-usage@opsnotify.nicecxone.com","from_email":"noreply-mstr-license-usage@opsnotify.nicecxone.com","received_at":"2026-07-14T23:33:34+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"MSTR License Usage Report attached, production-iesov1.","score":15.0,"signals":[{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":2,"attn_kind":"","attn_reason":""},{"id":"o65","tier":"P4","subject":"IC-Platform ic-prod-eusov1 sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-14T23:21:40+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod-eusov1.","score":15.0,"signals":[{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o66","tier":"P4","subject":"MSTR License Usage Report eu-central-1","from_name":"noreply-mstr-license-usage@opsnotify.nicecxone-sov1.eu","from_email":"noreply-mstr-license-usage@opsnotify.nicecxone-sov1.eu","received_at":"2026-07-14T23:06:18+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"MSTR License Usage Report attached, production-eusov1.","score":15.0,"signals":[{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":2,"attn_kind":"","attn_reason":""},{"id":"o68","tier":"P4","subject":"IC-Platform ic-prod-uk3 sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-14T20:31:06+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod-uk3.","score":15.0,"signals":[{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o72","tier":"P4","subject":"MSTR License Usage Report ap-northeast-2","from_name":"noreply-mstr-license-usage@opsnotify.nicecxone.com","from_email":"noreply-mstr-license-usage@opsnotify.nicecxone.com","received_at":"2026-07-14T16:27:05+00:00","importance":"normal","has_attachments":true,"is_read":true,"body_preview":"MSTR License Usage Report attached, production-kr.","score":15.0,"signals":[{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":2,"attn_kind":"","attn_reason":""},{"id":"o76","tier":"P4","subject":"IC-Platform ic-prod-jo sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-14T15:39:22+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod-jo.","score":15.0,"signals":[{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o77","tier":"P4","subject":"IC-Platform ic-prod-kr sprint/192 Deployment completed !","from_name":"pipelineinfraautomationeast@nice.com","from_email":"pipelineinfraautomationeast@nice.com","received_at":"2026-07-14T15:39:06+00:00","importance":"normal","has_attachments":true,"is_read":false,"body_preview":"IC Deployment Notification sprint-192 on ic-prod-kr.","score":15.0,"signals":[{"s":"has_attachment","c":5.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":3,"attn_kind":"","attn_reason":""},{"id":"o59","tier":"P4","subject":"Snowflake User Will be Disabled Soon","from_name":"infratools@niceincontact.com","from_email":"infratools@niceincontact.com","received_at":"2026-07-15T04:21:43+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Snowflake account cxone_na1 inactive 85+ days, disabled at 90 days.","score":12.0,"signals":[{"s":"thread_depth","c":4.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o92","tier":"P4","subject":"Monthly/deploySpecificBranch/July/dev/deploySpecificBranch-lambda-billing-api-overage-notifier-dev : Success !","from_name":"cxone-ci.jenkins@devops.niceincontact.com","from_email":"cxone-ci.jenkins@devops.niceincontact.com","received_at":"2026-07-14T09:40:44+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"BUILD SUCCESS lambda-billing-api-overage-notifier-dev.","score":12.0,"signals":[{"s":"thread_depth","c":4.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":2,"attn_kind":"","attn_reason":""},{"id":"o93","tier":"P4","subject":"Monthly/deploySpecificBranch/July/dev/deploySpecificBranch-lambda-billing-api-overage-notifier-dev : Success !","from_name":"cxone-ci.jenkins@devops.niceincontact.com","from_email":"cxone-ci.jenkins@devops.niceincontact.com","received_at":"2026-07-14T09:40:42+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"BUILD SUCCESS (duplicate).","score":12.0,"signals":[{"s":"thread_depth","c":4.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":2,"attn_kind":"","attn_reason":""},{"id":"o96","tier":"P4","subject":"Monthly/deploySpecificBranch/July/dev/deploySpecificBranch-billing-data-lake-registrations-dev : Success !","from_name":"cxone-ci.jenkins@devops.niceincontact.com","from_email":"cxone-ci.jenkins@devops.niceincontact.com","received_at":"2026-07-14T09:10:59+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"BUILD SUCCESS billing-data-lake-registrations-dev.","score":12.0,"signals":[{"s":"thread_depth","c":4.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o97","tier":"P4","subject":"Monthly/deploySpecificBranch/July/dev/deploySpecificBranch-billing-data-lake-registrations-dev : Success !","from_name":"cxone-ci.jenkins@devops.niceincontact.com","from_email":"cxone-ci.jenkins@devops.niceincontact.com","received_at":"2026-07-14T09:10:54+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"BUILD SUCCESS (duplicate).","score":12.0,"signals":[{"s":"thread_depth","c":4.0},{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":2,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o60","tier":"P4","subject":"Cafeteria Booking Update | July 15","from_name":"pune.facilities@nice.com","from_email":"pune.facilities@nice.com","received_at":"2026-07-15T03:08:10+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Cafeteria booked for Sparkathon.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o61","tier":"P4","subject":"\"Hi I got 2 offers need to choose 1. 1. TCS 11.5 ...\"","from_name":"industry@digest.fishbowlapp.com","from_email":"industry@digest.fishbowlapp.com","received_at":"2026-07-15T03:00:32+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Fishbowl community digest newsletter.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o63","tier":"P4","subject":"Akshay Narkhede mentioned everyone in a chat in Microsoft Teams","from_name":"365-noreply@nice.com","from_email":"365-noreply@nice.com","received_at":"2026-07-15T02:13:52+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Teams mention - three Lambda component failures on production-eusov1.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o69","tier":"P4","subject":"IT - Restoration - Email Delivery Issues to External Recipients","from_name":"itannouncements@nice.com","from_email":"itannouncements@nice.com","received_at":"2026-07-14T20:11:12+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"External email bounce-back issue resolved.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"empathetic","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o70","tier":"P4","subject":"Aboli Avadhani sent a message","from_name":"365-noreply@nice.com","from_email":"365-noreply@nice.com","received_at":"2026-07-14T18:22:46+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Teams message - comparison of planned vs actual for 26.3.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o81","tier":"P4","subject":"Reminder: Complete Your Self-Assessment","from_name":"growpro@nice.com","from_email":"growpro@nice.com","received_at":"2026-07-14T13:58:34+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Complete GrowPro Check-in Self-Assessment by July 15.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":2,"attn_kind":"","attn_reason":""},{"id":"o82","tier":"P4","subject":"Sparkathon 2026 | 1 Day to Go!","from_name":"innovation.gtc@nice.com","from_email":"innovation.gtc@nice.com","received_at":"2026-07-14T13:36:08+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"Conference rooms available for Sparkathon.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":0,"attn_kind":"","attn_reason":""},{"id":"o86","tier":"P4","subject":"NiCE Ltd. Weekly Digest","from_name":"noreply_nice@engage.mail.microsoft","from_email":"noreply_nice@engage.mail.microsoft","received_at":"2026-07-14T11:21:20+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Viva Engage weekly digest.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o89","tier":"P4","subject":"Trailblazers, Your Sparkathon 2026 Tee Awaits!","from_name":"innovation.gtc@nice.com","from_email":"innovation.gtc@nice.com","received_at":"2026-07-14T10:12:39+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Sparkathon tee reward for completed submissions.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":0,"attn_kind":"","attn_reason":""},{"id":"o91","tier":"P4","subject":"Got a Dog or a Cat? We Have a NiCE Surprise for You!","from_name":"life@nice.com","from_email":"life@nice.com","received_at":"2026-07-14T09:56:12+00:00","importance":"normal","has_attachments":false,"is_read":true,"body_preview":"Employee engagement pet event.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""},{"id":"o94","tier":"P4","subject":"Re: [nice-cxone/lambda-billing-api-overage-notifier] BIL-7203 changes for templates (PR #6)","from_name":"notifications@github.com","from_email":"notifications@github.com","received_at":"2026-07-14T09:30:56+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"GitHub push notification, commit pushed to PR #6.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":2,"attn_kind":"","attn_reason":""},{"id":"o98","tier":"P4","subject":"Monthly/deploySpecificBranch/July/test-de-msys/deploySpecificBranch-cloud-formation-billing-env-store-test-de-msys : Success !","from_name":"cxone-ci.jenkins@devops.niceincontact.com","from_email":"cxone-ci.jenkins@devops.niceincontact.com","received_at":"2026-07-14T09:10:00+00:00","importance":"normal","has_attachments":false,"is_read":false,"body_preview":"BUILD SUCCESS cloud-formation-billing-env-store.","score":10.0,"signals":[{"s":"sender_authority","c":3.0},{"s":"importance_flag","c":3.0},{"s":"recency","c":2.0}],"relationship":"unknown","action":"Archive / no action","tone":"concise","effort":"none","thread_depth":1,"web_link":"","promoted":false,"promoted_by":"","confidence":"medium","directed":false,"recipient_count":1,"attn_kind":"","attn_reason":""}]};
+</script>
+<script>
+(function(){
+  "use strict";
+  const $=(s,r=document)=>r.querySelector(s);
+  const el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.innerHTML=h;return e;};
+  const esc=s=>(s==null?"":String(s)).replace(/[&<>"]/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m]));
+  const META=RAW.meta, ITEMS=RAW.items;
+  const SCAN=new Date(META.scan_iso);
+
+  const TIER={
+    P1:{c:"var(--p1)",lbl:"Respond now",name:"P1 · Critical",ic:"🔴"},
+    P2:{c:"var(--p2)",lbl:"Respond today",name:"P2 · High",ic:"🟠"},
+    P3:{c:"var(--p3)",lbl:"This week",name:"P3 · Medium",ic:"🟡"},
+    P4:{c:"var(--p4)",lbl:"When time allows",name:"P4 · Low",ic:"⚪"}
+  };
+  const AVCOL=["#7c5cfc","#6366f1","#06b6d4","#10b981","#f59e0b","#ec4899","#2a78d6","#eb6834","#e34948","#1baf7a"];
+  const avColor=s=>AVCOL[Math.abs(hash(s||"?"))%AVCOL.length];
+  function hash(s){let h=0;for(let i=0;i<s.length;i++){h=(h<<5)-h+s.charCodeAt(i)|0;}return h;}
+  const SIGLBL={recency:"Recency",action_language:"Action lang.",sender_authority:"Sender",thread_depth:"Thread",importance_flag:"Importance",has_attachment:"Attachment"};
+
+  function initials(name,email){
+    let n=(name||email||"?").trim();
+    let p=n.split(/[\s.@_]+/).filter(Boolean);
+    return ((p[0]?.[0]||"")+(p[1]?.[0]||"")).toUpperCase()||n[0].toUpperCase();
+  }
+  function ago(iso){
+    const d=new Date(iso); let m=Math.round((SCAN-d)/60000);
+    if(m<0)m=0;
+    if(m<60)return m+"m ago";
+    const h=Math.round(m/60); if(h<24)return h+"h ago";
+    return Math.round(h/24)+"d ago";
+  }
+  function timeStr(iso){try{return new Date(iso).toLocaleString(undefined,{month:"short",day:"numeric",hour:"numeric",minute:"2-digit"});}catch(e){return iso;}}
+
+  // Categories are derived from already-computed pipeline fields (attn_kind,
+  // sender_relationship, subject/body keywords) rather than hardcoded example
+  // subjects, so this holds up on future runs with different mail.
+  function categorize(it){
+    const s=(it.subject||"").toLowerCase(), b=(it.body_preview||"").toLowerCase(), t=s+" "+b;
+    if(it.attn_kind==="meeting"||it.attn_kind==="cancel"||/microsoft teams meeting/.test(b))return"Meetings & Invites";
+    if(it.attn_kind==="reply"||/action required|action needed|approval needed|your input needed|please review/.test(s))return"Action Needed";
+    if(/\b(deploy|pipeline|build|release|sprint|ci\/cd|jenkins|feature branch)\b/.test(t))return"Deployments & CI";
+    if(it.relationship==="unknown"&&/report|usage|alert|summary|dashboard|scan (completed|results)/.test(s))return"Ops Reports";
+    if(it.relationship==="unknown")return"Announcements";
+    return"Threads & Discussion";
+  }
+  const CATS=["Deployments & CI","Ops Reports","Action Needed","Meetings & Invites","Announcements","Threads & Discussion"];
+  const CATCOL={"Deployments & CI":"var(--c1)","Ops Reports":"var(--c2)","Action Needed":"var(--c3)","Meetings & Invites":"var(--c4)","Announcements":"var(--c5)","Threads & Discussion":"var(--c6)"};
+
+  /* ---- incomplete-scan banner ---- */
+  if(META.incomplete){
+    $("#incBand").classList.add("on");
+    $("#incBand").innerHTML="⚠️ <b>Incomplete scan:</b> "+esc(META.incomplete_reason||"Some emails could not be fetched.");
+  }
+
+  /* ---- header ---- */
+  const uName=(META.user_name||"there").split(" ")[0];
+  const hr=SCAN.getUTCHours()+5.5;
+  const part=hr<12?"morning":hr<17?"afternoon":"evening";
+  $("#greet").innerHTML='Good '+part+', <span class="nm">'+esc(uName)+'</span> 👋';
+  $("#ava").textContent=(uName[0]||"?").toUpperCase();
+  $("#submeta").innerHTML=
+    '📅 '+SCAN.toLocaleDateString(undefined,{weekday:"long",month:"long",day:"numeric",year:"numeric"})+
+    ' <span class="dot"></span> 📁 '+esc(META.folder)+
+    ' <span class="dot"></span> ⏱ last '+META.since_hours+'h'+
+    ' <span class="dot"></span> '+META.scored+' emails';
+
+  /* ---- Directed at You (mail addressed to you personally / small team) ---- */
+  const RKC={reply:"rk-reply",meeting:"rk-meeting",fyi:"rk-fyi",cancel:"rk-cancel",attn:"rk-fyi"};
+  const nsub=s=>(s||"").replace(/^(re|fw|fwd):\s*/i,"").trim().toLowerCase();
+  const dmap=new Map();
+  ITEMS.filter(x=>x.directed).forEach(it=>{
+    const k=nsub(it.subject), cur=dmap.get(k);
+    if(!cur)dmap.set(k,{rep:it,count:1,maxRecip:it.recipient_count||0});
+    else{cur.count++; if(it.score>cur.rep.score)cur.rep=it; if((it.recipient_count||0)>cur.maxRecip)cur.maxRecip=it.recipient_count;}
+  });
+  const threads=[...dmap.values()].sort((a,b)=>{
+    const ra=a.rep.attn_kind==="reply"?1:0, rb=b.rep.attn_kind==="reply"?1:0;
+    return (rb-ra)||(b.rep.score-a.rep.score);
+  });
+  $("#wcount").textContent=threads.length;
+  const dMap=[];
+  $("#awaitlist").innerHTML=threads.length?threads.map(th=>{
+    const it=th.rep, gi=dMap.push(it)-1, t=TIER[it.tier];
+    const n=Math.max(0,(th.maxRecip||1)-1);
+    const hasDraft=!!it.draft;
+    return '<div class="arow" data-aw="'+gi+'" style="border-left-color:'+t.c+'">'+
+      '<div class="senav" style="background:'+avColor(it.from_email)+'">'+esc(initials(it.from_name,it.from_email))+'</div>'+
+      '<div class="mid"><div class="subj">'+esc(it.subject.replace(/^(re|fw|fwd):\s*/i,""))+'</div>'+
+        '<div class="l2"><span class="rchip '+(RKC[it.attn_kind]||"rk-fyi")+'">'+esc(it.attn_reason)+'</span>'+
+        '<b>'+esc(it.from_name||it.from_email)+'</b> <span class="dot"></span> '+ago(it.received_at)+
+        ' <span class="tome">👤 you + '+n+(n===1?' other':' others')+'</span>'+
+        (hasDraft?' <span class="draftready">📝 draft ready</span>':'')+
+        (th.count>1?' <span class="inst">'+th.count+' msgs</span>':'')+'</div></div>'+
+      '<div class="ascore" style="color:'+t.c+'">'+it.score+'</div>'+
+      '<button class="go">'+(hasDraft?'📝 Draft ready ↗':'Open ↗')+'</button></div>';
+  }).join(""):'<div style="padding:18px;text-align:center;color:var(--muted);font-size:13px">No email was addressed to you personally in this window — everything came via distribution lists. See the full Priority Inbox below.</div>';
+  $("#awaitlist").querySelectorAll(".arow").forEach(r=>{
+    const it=dMap[+r.dataset.aw];
+    r.addEventListener("click",()=>openModal(it));
+    r.querySelector(".go").addEventListener("click",e=>{
+      e.stopPropagation();
+      window.open(it.draft?it.draft.web_link:it.web_link,"_blank");
+    });
+  });
+  const topUrgent=[...ITEMS].sort((a,b)=>b.score-a.score).find(x=>!x.directed && /^Reply/.test(x.action||""));
+  if(topUrgent){
+    $("#urgentNote").innerHTML='⚠️ <b>Heads-up:</b> your most urgent email overall — “'+esc(topUrgent.subject)+'” ('+topUrgent.tier+', score '+topUrgent.score+', from '+esc(topUrgent.from_name||topUrgent.from_email)+') — went to <b>'+(topUrgent.recipient_count||"a large group of")+' recipients</b>, so it is not counted as personally addressed. Find it in your <b>Priority Inbox</b> below.';
+  } else { $("#urgentNote").style.display="none"; }
+
+  /* ---- KPIs ---- */
+  const KPI=[
+    {cap:"Directed at You",ic:"✋",bg:"rgba(208,59,59,.12)",col:"var(--p1)",val:threads.length,foot:"addressed to you / your team"},
+    {cap:"Unread",ic:"✉️",bg:"rgba(99,102,241,.12)",col:"var(--indigo)",val:META.unread,foot:"of "+META.scored+" in window"},
+    {cap:"High Importance",ic:"❗",bg:"rgba(236,72,153,.12)",col:"var(--pink)",val:META.high_importance,foot:"flagged by sender"},
+    {cap:"With Attachments",ic:"📎",bg:"rgba(6,182,212,.12)",col:"var(--cyan)",val:META.attachments,foot:"files to review"}
+  ];
+  $("#kpis").innerHTML=KPI.map(k=>
+    '<div class="kpi"><div class="cap"><span class="ic" style="background:'+k.bg+';color:'+k.col+'">'+k.ic+'</span>'+k.cap+'</div>'+
+    '<div class="val" style="color:'+k.col+'" data-count="'+k.val+'">0</div><div class="foot">'+esc(k.foot)+'</div>'+
+    '<div class="bar" style="background:'+k.col+';opacity:.35"></div></div>').join("");
+  document.querySelectorAll(".kpi .val").forEach(v=>{
+    const target=+v.dataset.count; let cur=0; const step=Math.max(1,Math.ceil(target/28));
+    const t=setInterval(()=>{cur+=step;if(cur>=target){cur=target;clearInterval(t);}v.textContent=cur;},22);
+  });
+
+  /* ---- Priority Inbox tiers ---- */
+  const byTier={P1:[],P2:[],P3:[],P4:[]};
+  ITEMS.forEach(it=>byTier[it.tier].push(it));
+  Object.keys(byTier).forEach(t=>byTier[t].sort((a,b)=>b.score-a.score));
+  $("#inboxMeta").textContent=ITEMS.length+" scored · ranked by urgency";
+
+  const SCOREMAX=70;
+  function rowHTML(it,i){
+    const t=TIER[it.tier];
+    const sigs=(it.signals||[]).map(s=>'<span class="sig">'+ (SIGLBL[s.s]||s.s) +' <b>+'+s.c+'</b></span>').join("");
+    const tags=
+      (!it.is_read?'<span class="tag unread">● unread</span>':'')+
+      (it.importance==="high"?'<span class="tag hi">❗ high</span>':'')+
+      (it.has_attachments?'<span class="tag att">📎</span>':'')+
+      (it.promoted?'<span class="tag auto" title="Auto-promoted because keyword \''+esc(it.promoted_by)+'\' appeared">🏷 '+esc(it.promoted_by)+'</span>':'');
+    const w=Math.max(6,Math.min(100,Math.round(it.score/SCOREMAX*100)));
+    return '<div class="row" data-idx="'+i+'" data-tier="'+it.tier+'">'+
+      '<div class="rail" style="background:'+t.c+'"></div>'+
+      '<div class="senav" style="background:'+avColor(it.from_email)+'">'+esc(initials(it.from_name,it.from_email))+'</div>'+
+      '<div class="mid">'+
+        '<div class="subj"><span class="txt">'+esc(it.subject)+'</span></div>'+
+        '<div class="line2"><b>'+esc(it.from_name||it.from_email)+'</b> <span class="dot"></span> '+ago(it.received_at)+' '+tags+'</div>'+
+        '<div class="sigs">'+sigs+'</div>'+
+      '</div>'+
+      '<div class="right">'+
+        '<div class="scorewrap"><div class="n" style="color:'+t.c+'">'+it.score+'</div>'+
+          '<div class="track"><div class="fill" style="width:'+w+'%;background:'+t.c+'"></div></div></div>'+
+        '<span class="actpill" style="background:'+t.c+'1f;color:'+t.c+'">'+esc(it.action)+'</span>'+
+      '</div></div>';
+  }
+
+  let idxMap=[];
+  const tiersEl=$("#tiers");
+  ["P1","P2","P3","P4"].forEach(t=>{
+    const list=byTier[t]; if(!list.length)return;
+    const sec=el("section","tsec"+(t==="P4"||t==="P3"?" collapsed":""));
+    const band=el("div","band");
+    band.style.background="linear-gradient(90deg,"+TIER[t].c+"14,transparent)";
+    band.innerHTML='<span class="tierdot" style="background:'+TIER[t].c+'"></span>'+
+      '<span class="lbl" style="color:'+TIER[t].c+'">'+TIER[t].name+'</span>'+
+      '<span class="cnt">· '+TIER[t].lbl+'</span>'+
+      '<span style="flex:1"></span><span class="cnt">'+list.length+'</span>';
+    sec.appendChild(band);
+    const rows=el("div","rows");
+    rows.innerHTML=list.map(it=>{const gi=idxMap.push(it)-1;return rowHTML(it,gi);}).join("");
+    sec.appendChild(rows);
+    if(t==="P3"||t==="P4"){
+      const tg=el("button","toggle","▸ Show "+list.length+" "+t+" items");
+      tg.style.margin="0 0 10px 20px";
+      tg.onclick=()=>{const c=sec.classList.toggle("collapsed");tg.textContent=(c?"▸ Show ":"▾ Hide ")+list.length+" "+t+" items";};
+      sec.insertBefore(tg,rows);
+    }
+    tiersEl.appendChild(sec);
+  });
+  tiersEl.querySelectorAll(".row").forEach(r=>{
+    r.addEventListener("click",()=>openModal(idxMap[+r.dataset.idx]));
+  });
+
+  /* ---- Category doughnut (inline SVG) ---- */
+  const catCounts={}; CATS.forEach(c=>catCounts[c]=0);
+  ITEMS.forEach(it=>{catCounts[categorize(it)]++;});
+  const total=ITEMS.length||1;
+  const R=64,SW=26,C=90,circ=2*Math.PI*R;
+  let off=0; const segs=[];
+  const tip=$("#tip");
+  CATS.forEach(cat=>{
+    const v=catCounts[cat]; if(!v)return;
+    const frac=v/total, len=frac*circ, gap=2;
+    segs.push({cat,v,frac,dash:Math.max(0,len-gap),off});
+    off+=len;
+  });
+  const arcs=segs.map(s=>
+    '<circle r="'+R+'" cx="'+C+'" cy="'+C+'" fill="none" stroke="'+CATCOL[s.cat]+'" stroke-width="'+SW+'" '+
+    'stroke-dasharray="'+s.dash+' '+(circ-s.dash)+'" stroke-dashoffset="'+(-s.off)+'" '+
+    'data-cat="'+esc(s.cat)+'" data-v="'+s.v+'" style="transition:opacity .12s;cursor:pointer"></circle>').join("");
+  $("#donut").innerHTML='<svg width="180" height="180" viewBox="0 0 180 180" style="transform:rotate(-90deg)">'+arcs+'</svg>';
+  const dw=$("#donut"); dw.style.position="relative";
+  const ctr=el("div"); ctr.style.cssText="position:absolute;inset:0;display:grid;place-items:center;pointer-events:none;text-align:center";
+  ctr.innerHTML='<div><div style="font-family:var(--font-head);font-weight:800;font-size:30px;line-height:1">'+ITEMS.length+'</div>'+
+    '<div style="font-size:11px;color:var(--muted);font-weight:600;margin-top:2px">emails</div></div>';
+  dw.appendChild(ctr);
+  $("#catMeta").textContent=CATS.filter(c=>catCounts[c]).length+" categories";
+  $("#catLegend").innerHTML=CATS.filter(c=>catCounts[c]).map(c=>
+    '<div class="lg" data-cat="'+esc(c)+'"><span class="sw" style="background:'+CATCOL[c]+'"></span>'+
+    '<span class="nm">'+esc(c)+'</span><span class="ct">'+catCounts[c]+'</span>'+
+    '<span class="pc">'+Math.round(catCounts[c]/total*100)+'%</span></div>').join("");
+  function hi(cat){
+    dw.querySelectorAll("circle").forEach(c=>c.style.opacity=(!cat||c.dataset.cat===cat)?"1":"0.25");
+    $("#catLegend").querySelectorAll(".lg").forEach(l=>l.style.opacity=(!cat||l.dataset.cat===cat)?"1":"0.4");
+  }
+  dw.querySelectorAll("circle").forEach(c=>{
+    c.addEventListener("mousemove",e=>{tip.style.opacity="1";tip.textContent=c.dataset.cat+": "+c.dataset.v+" ("+Math.round(c.dataset.v/total*100)+"%)";tip.style.left=(e.clientX+12)+"px";tip.style.top=(e.clientY-10)+"px";});
+    c.addEventListener("mouseenter",()=>hi(c.dataset.cat));
+    c.addEventListener("mouseleave",()=>{tip.style.opacity="0";hi(null);});
+  });
+  $("#catLegend").querySelectorAll(".lg").forEach(l=>{
+    l.addEventListener("mouseenter",()=>hi(l.dataset.cat));
+    l.addEventListener("mouseleave",()=>hi(null));
+  });
+
+  /* ---- tier mix bar ---- */
+  const tb=$("#tierbar");
+  ["P1","P2","P3","P4"].forEach(t=>{
+    const v=META.counts[t]; if(!v)return;
+    const s=el("span"); s.style.flex=v+" 1 0"; s.style.background=TIER[t].c;
+    s.title=TIER[t].name+": "+v;
+    s.addEventListener("mousemove",e=>{tip.style.opacity="1";tip.textContent=TIER[t].name+": "+v;tip.style.left=(e.clientX+12)+"px";tip.style.top=(e.clientY-10)+"px";});
+    s.addEventListener("mouseleave",()=>tip.style.opacity="0");
+    tb.appendChild(s);
+  });
+  $("#tstats").innerHTML=["P1","P2","P3","P4"].map(t=>
+    '<div class="tstat"><div class="n" style="color:'+TIER[t].c+'">'+META.counts[t]+'</div><div class="l">'+t+'</div></div>').join("");
+  const promotedCount=ITEMS.filter(x=>x.promoted).length;
+  if(promotedCount>0){
+    $("#autoNote").innerHTML='🏷 <b>'+promotedCount+' item'+(promotedCount!==1?'s':'')+'</b> were keyword-promoted (e.g. a "critical"/"urgent" match in the text) — skim the 🏷 tag before treating one as a true fire.';
+  } else {
+    $("#autoNote").style.display="none";
+  }
+
+  /* ---- scan card ---- */
+  $("#scan").innerHTML=
+    row2("Mailbox folder","<b>"+esc(META.folder)+"</b>")+
+    row2("Look-back window","<b>"+META.since_hours+" hours</b>")+
+    row2("Scored","<b>"+META.scored+"</b> emails")+
+    row2("Scan time","<b>"+SCAN.toLocaleString(undefined,{month:"short",day:"numeric",hour:"2-digit",minute:"2-digit"})+"</b>")+
+    row2("Mode","<b>read-only</b>");
+  function row2(a,b){return '<div class="r"><span>'+a+'</span><span>'+b+'</span></div>';}
+
+  /* ---- modal ---- */
+  function openModal(it){
+    const t=TIER[it.tier];
+    const why=(it.signals||[]).map(s=>'<span class="whychip">'+(SIGLBL[s.s]||s.s)+' <b style="color:'+t.c+'">+'+s.c+'</b></span>').join("");
+    $("#modal").innerHTML=
+      '<button class="close" id="mClose">✕</button>'+
+      '<div class="mh">'+
+        '<span class="badge" style="background:'+t.c+'1f;color:'+t.c+'">'+t.name+' · '+esc(it.action)+'</span>'+
+        '<h2>'+esc(it.subject)+'</h2>'+
+        '<div class="from">from <b>'+esc(it.from_name||it.from_email)+'</b> &lt;'+esc(it.from_email)+'&gt;<br>'+timeStr(it.received_at)+' · '+ago(it.received_at)+' · '+esc(it.relationship)+' sender'+(it.thread_depth>1?' · thread depth '+it.thread_depth:'')+'</div>'+
+      '</div>'+
+      '<div class="mb">'+
+        '<div class="mblock"><div class="t">📄 Preview <span style="color:var(--muted);font-weight:600;letter-spacing:0;text-transform:none">(first 200 chars)</span></div><div class="txt">'+esc(it.body_preview||"—")+'</div></div>'+
+        '<div class="mblock"><div class="t">🧠 Why this ranked '+it.tier+' — score '+it.score+'</div><div class="whygrid">'+why+
+          (it.promoted?'<span class="whychip" style="background:rgba(237,161,0,.16)">🏷 keyword floor: <b>'+esc(it.promoted_by)+'</b></span>':'')+
+          '<span class="whychip">confidence: <b>'+esc(it.confidence)+'</b></span></div></div>'+
+        '<div class="mblock"><div class="t">✅ Suggested handling</div><div class="recgrid">'+
+          '<div class="rec"><div class="l">Action</div><div class="v">'+esc(it.action)+'</div></div>'+
+          '<div class="rec"><div class="l">Reply tone</div><div class="v">'+esc(it.tone)+'</div></div>'+
+          '<div class="rec"><div class="l">Effort</div><div class="v">'+esc(it.effort)+'</div></div>'+
+        '</div></div>'+
+      '</div>'+
+      '<div class="mf"><button class="btn ghost" id="mCancel">Close</button>'+
+        (it.draft?'<button class="btn" id="mDraft">📝 Open Draft ↗</button>':'')+
+        '<button class="btn primary" id="mOpen">↗ Open in Outlook</button></div>';
+    $("#ov").classList.add("on");
+    $("#mClose").onclick=$("#mCancel").onclick=closeModal;
+    $("#mOpen").onclick=()=>window.open(it.web_link,"_blank");
+    if(it.draft) $("#mDraft").onclick=()=>window.open(it.draft.web_link,"_blank");
+  }
+  function closeModal(){$("#ov").classList.remove("on");}
+  $("#ov").addEventListener("click",e=>{if(e.target===$("#ov"))closeModal();});
+  document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+
+  /* ---- header actions ---- */
+  const root=document.documentElement;
+  function applyTheme(m){root.setAttribute("data-theme",m);$("#themeBtn").innerHTML=(m==="dark"?"☀️ Light":"🌙 Dark");}
+  let theme=(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches)?"dark":"light";
+  applyTheme(theme);
+  $("#themeBtn").onclick=()=>{theme=(theme==="dark"?"light":"dark");applyTheme(theme);};
+  $("#focusBtn").onclick=()=>{document.querySelector(".waiting").scrollIntoView({behavior:"smooth",block:"start"});};
+  $("#outlookBtn").onclick=()=>window.open("https://outlook.office365.com/mail/inbox","_blank");
+})();
+</script>
+</body>
+</html>
